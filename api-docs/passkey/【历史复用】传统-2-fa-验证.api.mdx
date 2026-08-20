@@ -1,0 +1,67 @@
+---
+id: 【历史复用】传统-2-fa-验证
+title: "【历史复用】传统 2FA 验证"
+description: "使用时机：1) 绑定 passkey 前置(messageType=BIND_PASSKEY，成功后 openSafe)；2) 删除 passkey 前置(REVOKE_PASSKEY)；3) 高风险业务 passkey 失败兜底(type 选 EMAIL/PHONE/GOOGLE、messageType=业务、带 riskConsoleNo，写回同一风控单后重试)。"
+sidebar_label: "【历史复用】传统 2FA 验证"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: api/passkey/3-world-passkey-接入-api（对接总表）
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"【历史复用】传统 2FA 验证"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/security/verify"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+使用时机：1) 绑定 passkey 前置(messageType=BIND_PASSKEY，成功后 openSafe)；2) 删除 passkey 前置(REVOKE_PASSKEY)；3) 高风险业务 passkey 失败兜底(type 选 EMAIL/PHONE/GOOGLE、messageType=业务、带 riskConsoleNo，写回同一风控单后重试)。
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./【历史复用】传统-2-fa-验证.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./【历史复用】传统-2-fa-验证.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

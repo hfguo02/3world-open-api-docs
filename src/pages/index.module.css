@@ -1,0 +1,45 @@
+.main {
+  flex: 1;
+}
+
+.hero {
+  padding: 6rem 0;
+  text-align: center;
+  background: linear-gradient(180deg, var(--ifm-color-primary-darkest), transparent);
+}
+
+.heroInner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.heroTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  color: var(--ifm-color-primary-light);
+  margin-bottom: 1rem;
+}
+
+.heroDescription {
+  font-size: 1.125rem;
+  color: var(--ifm-color-content-secondary);
+  margin-bottom: 2rem;
+}
+
+.heroActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.cards {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}

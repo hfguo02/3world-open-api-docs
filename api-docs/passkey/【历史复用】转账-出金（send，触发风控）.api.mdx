@@ -1,0 +1,69 @@
+---
+id: 【历史复用】转账-出金（send，触发风控）
+title: "【历史复用】转账/出金（SEND，触发风控）"
+description: "使用时机：发起转账/出金。命中风控返回 code=RISK_NEED_TWO_FA + risk(consoleNo, recommend=PASSKEY) → passkey verify/start+finish(带 riskConsoleNo)写回 → 带同一 consoleNo 重试放行。仅展示风控相关字段，其余业务字段以实际为准。"
+sidebar_label: "【历史复用】转账/出金（SEND，触发风控）"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: api/passkey/3-world-passkey-接入-api（对接总表）
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"【历史复用】转账/出金（SEND，触发风控）"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/sendreceive/send"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+使用时机：发起转账/出金。命中风控返回 code=RISK_NEED_TWO_FA + risk(consoleNo, recommend=PASSKEY) → passkey verify/start+finish(带 riskConsoleNo)写回 → 带同一 consoleNo 重试放行。仅展示风控相关字段，其余业务字段以实际为准。
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./【历史复用】转账-出金（send，触发风控）.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./【历史复用】转账-出金（send，触发风控）.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./【历史复用】转账-出金（send，触发风控）.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

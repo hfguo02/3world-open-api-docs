@@ -1,0 +1,67 @@
+---
+id: 【历史复用】账号密码登录
+title: "【历史复用】账号密码登录"
+description: "使用时机：passkey 登录找不到可用凭证时兜底。若命中登录风控返回 code=RISK_NEED_TWO_FA + risk.consoleNo，走 /security/verify(messageType=LOGIN) 后带同一 consoleNo 重试。"
+sidebar_label: "【历史复用】账号密码登录"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdWW1TE8kW/itd8wm96rAvdbfKKqsWIWKubEIlQa+lFo5hgKxJJndmonIpqoIKBE1IdAF5E2EFNqsL0V12jQngjzE9k3zyL9xzumfyjrB776drbS2Znu7Tp58+5zkvMyro0pAmnL0mfHWGfHmhgxRzM6XdLZp6Zy4W6P7cx1iazkzS1K90I2nOZj7Gngg3TgkDsuZXAxE9oISFs0Jx/wO8Mp79YazkP+0tRSRNuy2PEC7AmD4o5pI0/oamsjCLTm2XsuMwl06s0DyIv196vEmf7Bdz23x++eWMMfNT6cMsXV4lfmVAPudxei/1uxyOrn7fFXc/qPg3oga022f8SlhTgrJL+bSXKP3+hoia7I+qAX1EvCOrgcGRtpCsadKQ7BuJyOd63N1O1wlC0zM0t0XTiWIuRioCSHkqWcqiMsIpQZX/FZU1/bwyMCKcHWWPAVUeEM7qalQ+JcAiXQ7r+EqKRIIBv4QoiN9rCMWooPmH5ZCEv3TYFsBRbn0v+3WQG1GViKzqAVnDtzApEKyZpulqIDwkNEJbvr9j7ryFA8K1GNOPAeBiPlGOTYP6wtgpQVJlqRMwOloQX0wTebhZLo6LrhMXGVbCsisauiWrx5b4OXFgCHcVdeBoWfzqaXbSXBvHlXi/nfbttFoejgaD0q2gbN9KA2rMhmhyjmm3XN6aN35ZL+by5s9gnwm0crADfudoiWAQy6vCGOyrB3SUKXQpPcpQIHxZQWXke1IoEpRrbk2IarL67YAcUsAIQ0LtSYWT7J/QdAbUeGwMN1FlLQLj3A6+bG/HPw3QxtP00QsjPl9eiQGioHz5VQLcRvgT5icFg+5B8OujDFGL+v3gJzUg31JAZSncfOELWZre4rqBqyDwhD+Jg1JQkwndeFva3UTI/MeyyWJuiT5ahysHaYCDJQwurMnjG3CAKV+3f0VgyMz/VNrZgKHShylj5YVorLyiezGazsKU3g6v95Ljar/L7es/7+5zdRF4axae0J2lhrfevt5et8fn6CKlnQO6MQWEZcxmjcR4zbzLDo/zwlVQxtkD87ge/MA1kzovdvT0OFzdjn7HP3udHphoJJ4Y8QWuXbM0n/uSw9XvdF3u6HF2EXMzYyR3jGdrxly8Zi5Do9Pt8rp7HJW56HG2lSO/Jt6XJ5IIfUgbOobvptLmRt6YnzLW47a/teKs+lWlnyAuPOHbgt+YhRTxyFo0qJ/B9YRztrn0kO4kjLldmrpvzL35tBen2fc0PwseZ77OEk/VKzyWH3T53J/2ppsM0/85//+sv+NWhW2MZqIdi/h9AWjc5rjvlx/so+/vPOAmy7bz6pIe1VptKYejIYyTTpfTB4+9Hnenw+vFXw5Xl9PVDb+8fZ3WmMfxD0enrzlUck3NR38YMbR6lEXo00wp+6NoCQQvemimJyEeipZgQg8m+GBbMZ+n7zaBGOBsJ0RrO1KOLYGBiXxPYjx+ahae27faI9+RW8YZ+zg97ivw9J2jy9n3Hfy46Oy+2FLt8uLP5vY0+BuoDWtIcX9G5KsI6orrSPn1gr2v16+otRQQANoagrDSWjKNT4KtkPbTXwAdYlzz42sfW3q46ugg8Mg5ou4iDoMfYdzfoY8yxf0VOAcKIMbsQWk9IVpMU0szlQvgsNOddWMt1wxzWJYHfHeVC9KxORTorLQ1XruVzaf8jcWn4Nf8mYEqQ6gJyWG+1ZHQXHS7HPDs+A74Cv52u93dPThgkUozNMZMppRMg/eyLNCYf0/3UggRCiI81otMGuGRXuQiSenNO2M7YfHhYka0NmBGuZ6AkF5+ullBKeC/Let/GiYGPvyXnKuHqfZaBBa9UbxzoKXZDSpqSNL50N+/PjKFqN2VOLsgbQBepvFFgstws+GA7tVVCcRbfGXtKKmqNALiA7ocasEjY00myXPfpYfm9rw5t2nuzUNApPFnpfUMbEq37pNrHZ2dEL4gTDk6+zxO39V+r6/vwgUwzP729i9u2B7nY3n8X9aDO6KxNmVuHxy2cWUvjyxBwvHfb0dnXtDlNR6HqmeGQmF515jZpG/nIEqxoCYFwhbaI5fkkeOkFgXjMeQqryxUIShtLJWy26VMjEA8sA7IygjNkntG8vuVaFjvt8uIfk2PDg6CdISZn2BIlQbkgWMbMKSc5cUk5igsNFasl41ZTm5sv6S5HM8z9S5Jb1k7tAoixvTPABDQJuQMEGWt1RBJ8XDbz4yd38tLKbqSNxazpRiAuoDj00kIwkZiGh0oW6Cp+aawG8TEl4f14+btZuEHY3XFwtQKSqCRldQzDTDAwxGZ8MO4q5VozkOWaJtaRPbritvT1XoXreKXVwL6cCM1/zUHLeZmgXGMt/cZPVbc1WLNtwW6+ri8PEnTcdt3GHEyh9FRgf8JV/AErF4DThh8b1wRiHTLSlDhdcHRtuTsJXT/KX27SlfeFD+sG+MAYhyWi8wX1BHRjwW1CppDlaGoQ6IeCMn/hjJRjCiaLgVrL7aDO9DRm9Z3CDjAhFXodvy1c0zwmuLeGhyW9yRsDRPFg2Vuy7wtAagACCJEIfiDzJF6CccwFmaAWlrllodW30fUlXY1DhRVerDPK8qj6vDPi2yoyxsFH1GRH0t2C8E1pW5P7c3Z1nqZNVC6ZL0epkOuE+2RJwCAuFmYBOh5BwY93WrGcEaxHnxgQwSySU5W1lJW/GF/ZnKxsRzHosFhsWPjuFVM8PgfksEmQ5HjJQANbv5DEqoUMLnys10j/ltbSDvB3EljAB2b8um7X7lVt5UfZDCtZcYIJsqkYd/guPlJAx3OZoz4O8hE6uQCUHT99Yl6UBjS5yUNMTmq+h84JODUz9KV23LYJYVap5x2e0T46q6iBgdOs9nNEbmwYU4n6MYuTSfRHpfzUIeTuiV4CPxxWQpGjx0huFyUyKq+UvYdkDTk9HRik6ZhMMlHYOM6lLySD7dyhgcVGB+70Yif9b6m/8OQsKISs1V8vmOrWmmj2F1CJAPW3bFKcsFrzThVBb0KayN2tTgI9+7dE1jnqLEd1FIBllZUNGhspVTU4Sk0lurxdEOPieuH3FLtDNRU44Kn85tvvhHqq7RqFdaqULHrjzHrHygh68MK9sswjLAOmj4MTyJ6iMiiiTjAm3DwEsaAODTWzYqq2IAbHb0FBt6nBsfGmu1iJkt/fADxjD6PoV2sZEhHJDCo3CPWm9RCeSpVnkhCKSjgzdsJnxebZ/ye7euvidWRAGaewAi4x7AMiSC6bbjl9bUy1Ep7hFQvt5K/GLFx25CnmZ1iQ89T7UQ7mnuQFa+oBp/qWF3cqBmu9ikrYw19yprkI4DOgQhYnsEPSXqt6I0UNLFJOnqdvMkDz0aswHJ4jLh4Y/z8X5z58kx7M1+u/AJG1yANgjpvFHF5gNbJk3QiA5zHCe/kSazEEtNAh+XYLPAg+ZqYhYc4uDZl/Jb5GEsb82/oj5BrPxHhofhhx5h9bz00fMigqUe1Xy4gOzeyqWLuFZ3Koyap+/T5FJdqrC4Vcwc0tlfMzZi/Hpg7MZp+XXw/DUuuh6+HodQFKWZ+i3UWl66HT5Py9K7x/AE8lBc37CQZSpB5/FRh8xHNbZGbtYZzloxWTWPsJpN+mvDAZBZeFHMxmpgovXxvdd1A1k32geQ68sx14Wa1gcpTqkoWxb6jkPLzVYJtVkhlWeVDjHQedKg0z6z9aruqbZo0KJ+gs1ncm/VVGTIvIdaRm43fW262QcwIe3EFqvatV+oclv23cQBUW0N+wWj/fI1/fuGwcGcgdOK30vispUH59QIvD61mndXzXeLbiBDiVf1jbNx6hAotoA0TSBNJnSmfq3YFWUZhZNahlGjjZseNBPRcLuaSsPQcHpTwKfgZCFMvIKaQxCjAcvJmE+JZKf9uwc/TaOaj1Y79/9l3MosXdSg8xUgQCnSW4KgsX+Rsfo3lO4JVHSAyFqMD5w4j7cOMWiKHYSA8Fcr7a/DzjqQGeG577Qb2WzjjYgi4jR0AoZPjeppFmFN2IGz+KoJJEF8BWa4c0T8790ZNZOp1e7HRe8v6EBjiFKtKd5E04f9nBfihsHtmMYONQQEthYeiACe85zLx338A68Znxw==
+sidebar_class_name: "post api-method"
+info_path: api/passkey/3-world-passkey-接入-api（对接总表）
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"【历史复用】账号密码登录"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/user/login/doLogin"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+使用时机：passkey 登录找不到可用凭证时兜底。若命中登录风控返回 code=RISK_NEED_TWO_FA + risk.consoleNo，走 /security/verify(messageType=LOGIN) 后带同一 consoleNo 重试。
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./【历史复用】账号密码登录.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./【历史复用】账号密码登录.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

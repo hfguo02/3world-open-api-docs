@@ -1,0 +1,1 @@
+{"parameters":[{"name":"deviceId","in":"header","required":false,"schema":{"type":"string"},"description":"设备唯一标识，可选"}]}

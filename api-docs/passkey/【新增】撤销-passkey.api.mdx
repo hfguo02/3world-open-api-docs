@@ -1,0 +1,67 @@
+---
+id: 【新增】撤销-passkey
+title: "【新增】撤销 Passkey"
+description: "使用时机：列表点删除并二次确认（含提现冻结 24h 文案），且已通过 REVOKE_PASSKEY 2FA。前置注解 @SaCheckSafe('REVOKE_PASSKEY')。删除成功后后端设提现 24h 限制。"
+sidebar_label: "【新增】撤销 Passkey"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: api/passkey/3-world-passkey-接入-api（对接总表）
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"【新增】撤销 Passkey"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/security/passkey/revoke"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+使用时机：列表点删除并二次确认（含提现冻结 24h 文案），且已通过 REVOKE_PASSKEY 2FA。前置注解 @SaCheckSafe("REVOKE_PASSKEY")。删除成功后后端设提现 24h 限制。
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./【新增】撤销-passkey.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./【新增】撤销-passkey.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

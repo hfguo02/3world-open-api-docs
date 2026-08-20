@@ -1,0 +1,67 @@
+---
+id: 【历史复用】kyt-筛查扣费（kyt，触发风控）
+title: "【历史复用】KYT 筛查扣费（KYT，触发风控）"
+description: "使用时机：发起需扣费的 KYT 地址筛查。命中风控与转账同理。提现/出金(on-chain /api/onchain/order，businessType=WITHDRAW)走同一套模式。"
+sidebar_label: "【历史复用】KYT 筛查扣费（KYT，触发风控）"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: api/passkey/3-world-passkey-接入-api（对接总表）
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"【历史复用】KYT 筛查扣费（KYT，触发风控）"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/kyt/screening/orders"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+使用时机：发起需扣费的 KYT 地址筛查。命中风控与转账同理。提现/出金(on-chain /api/onchain/order，businessType=WITHDRAW)走同一套模式。
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./【历史复用】kyt-筛查扣费（kyt，触发风控）.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./【历史复用】kyt-筛查扣费（kyt，触发风控）.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

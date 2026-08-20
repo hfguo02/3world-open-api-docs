@@ -1,0 +1,59 @@
+---
+sidebar_position: 1
+---
+
+import CardGroup from '@site/src/components/CardGroup';
+import Card from '@site/src/components/Card';
+
+# Overview
+
+> Victoria 开发者文档平台。基于 Docusaurus 构建，支持多语言、多产品线、多版本结构，并集成 OpenAPI 生成可交互的 API 参考文档。
+
+本平台面向接入 Victoria 开放能力的开发者，提供从接入引导、接口说明到调试的全流程文档。
+
+## 核心能力
+
+<CardGroup cols={3}>
+  <Card title="快速接入" icon="rocket" href="/guide/quickstart">
+    从创建账号到完成首次 API 调用的完整接入流程。
+  </Card>
+
+  <Card title="Webhook 通知" icon="bell" href="/guide/webhooks">
+    订阅事件通知，实时接收交易、风控等业务事件。
+  </Card>
+
+  <Card title="API 参考" icon="code" href="/api/passkey/overview">
+    基于 OpenAPI 自动生成，支持在线调试与参数校验。
+  </Card>
+</CardGroup>
+
+## 产品线
+
+<CardGroup cols={2}>
+  <Card title="Passkey 接入" icon="fingerprint" href="/api/passkey/overview">
+    无密码登录、Passkey 管理、2FA 与风控业务接口。
+  </Card>
+
+  <Card title="更多产品线" icon="boxes-stacked">
+    更多产品线接入文档即将上线。
+  </Card>
+</CardGroup>
+
+## 开始之前
+
+接入前请准备：
+
+- 有效的接入方账号与 API 凭证
+- 选择对接环境（沙箱 / 生产）
+- 阅读 [快速接入](/guide/quickstart) 了解基本流程
+
+## 文档结构
+
+| 区域 | 路径 | 说明 |
+| --- | --- | --- |
+| 指南 | `/guide/*` | 手写接入引导文档，含步骤与示例 |
+| API 参考 | `/api/passkey/*` | 由 OpenAPI 规格自动生成，可交互调试 |
+
+### 多语言
+
+站点默认英文，通过右上角语言切换可切换到中文。指南与 API 参考均支持 `en` / `zh` 两种语言。
