@@ -1,7 +1,9 @@
-import React from 'react';
-import {Redirect} from '@docusaurus/router';
-import useBaseUrl from '@docusaurus/useBaseUrl';
+import React, {useEffect} from 'react';
 
-export default function LegacyHome(): React.JSX.Element {
-  return <Redirect to={useBaseUrl('/v1/introduction')} />;
+export default function LegacyHome(): React.JSX.Element | null {
+  useEffect(() => {
+    window.location.replace(new URL('v1/introduction', window.location.href).toString());
+  }, []);
+
+  return null;
 }
