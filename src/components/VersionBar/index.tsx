@@ -57,7 +57,7 @@ export default function VersionBar() {
         <div className="docs-version-bar__meta">
           {isV1 && (
             <p className="docs-version-bar__notice">
-              历史版本 · 请勿与 V2 接口混用
+              V1 · 仅用于维护现有集成
             </p>
           )}
         </div>

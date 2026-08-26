@@ -52,7 +52,7 @@ export default function ApiOverview({version}: {version: ApiRelease}) {
         </p>
         <h1>API 文档</h1>
         <p>
-          按业务模块查找接口。每个接口页包含请求参数、字段约束、响应结构和明确维护的 JSON 示例。
+          按业务模块查阅接口定义、请求参数、响应结构和 JSON 示例。
         </p>
         <span>{endpointCount} 个接口</span>
       </header>

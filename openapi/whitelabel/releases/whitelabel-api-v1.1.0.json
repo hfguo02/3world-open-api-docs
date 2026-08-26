@@ -3,11 +3,11 @@
   "info": {
     "title": "3World 白标卡服务 API",
     "version": "1.1.0",
-    "description": "1.1.0 当前版本接口。已移除存在等价 V2 能力的旧版接口。"
+    "description": "1.1.0 是新接入的默认版本，包含 V2 接口及尚未被替代的 V1 接口。"
   },
   "servers": [
     {
-      "url": "https://dev.3worldglobal.com/wapi",
+      "url": "https://label.3worldglobal.com/wapi",
       "description": "Sandbox"
     },
     {
@@ -1747,7 +1747,7 @@
         "properties": {
           "partnerId": {
             "type": "string",
-            "description": "合作伙伴唯一标识"
+            "description": "白标商户唯一标识"
           },
           "availableBalance": {
             "type": "number",

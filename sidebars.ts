@@ -11,8 +11,7 @@ const sidebars: SidebarsConfig = {
       },
       "items": [
         "introduction/quickstart",
-        "introduction/authentication",
-        "introduction/request-signing",
+        "introduction/authentication-signature",
         "introduction/common-responses"
       ]
     },

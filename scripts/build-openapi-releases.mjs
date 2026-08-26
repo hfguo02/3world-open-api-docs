@@ -25,11 +25,11 @@ const CURRENT_REPLACED_PATHS = new Set([
 const RELEASES = {
   '1.0.0': {
     includePath: (apiPath) => apiPath.includes('/v1/'),
-    description: '1.0.0 历史版本接口。新接入请优先使用当前版本。',
+    description: '1.0.0 仅用于维护现有 V1 集成；新接入请使用 V2。',
   },
   '1.1.0': {
     includePath: (apiPath) => !CURRENT_REPLACED_PATHS.has(apiPath),
-    description: '1.1.0 当前版本接口。已移除存在等价 V2 能力的旧版接口。',
+    description: '1.1.0 是新接入的默认版本，包含 V2 接口及尚未被替代的 V1 接口。',
   },
 };
 
@@ -98,7 +98,7 @@ const FIELD_DESCRIPTIONS = {
   pan: '完整卡号',
   pan4: '卡号后四位',
   pan6: '卡号前六位',
-  partnerId: '合作伙伴唯一标识',
+  partnerId: '白标商户唯一标识',
   phone: '联系电话',
   phoneNumber: '电话号码',
   pin: '六位交易 PIN',
@@ -325,8 +325,7 @@ function buildSidebar(spec) {
         link: {type: 'doc', id: 'introduction/index'},
         items: [
           'introduction/quickstart',
-          'introduction/authentication',
-          'introduction/request-signing',
+          'introduction/authentication-signature',
           'introduction/common-responses',
         ],
       },

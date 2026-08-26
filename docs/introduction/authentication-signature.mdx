@@ -1,0 +1,59 @@
+---
+title: 鉴权签名
+---
+
+# 鉴权签名
+
+所有 `/openapi/**` 请求均须携带商户凭证、请求标识和签名。
+
+## 请求头
+
+| Header | 必填 | 说明 |
+| --- | --- | --- |
+| `X-Partner-Id` | 是 | 白标商户 ID，数字字符串 |
+| `X-API-Key` | 是 | API Key |
+| `X-Timestamp` | 是 | Unix 时间戳，毫秒 |
+| `X-Request-Id` | 是 | 请求唯一 ID，用于防重放 |
+| `X-Signature` | 是 | HMAC-SHA256 小写十六进制签名 |
+
+3World 校验商户与 API Key 状态、IP 白名单、时间戳、Request ID、签名和 API Key 限流。`X-Timestamp` 与 3World 服务器时间的偏差不得超过 2 分钟；同一 `X-Partner-Id + X-Request-Id` 在 5 分钟内不得重复使用。
+
+JSON 请求使用 `Content-Type: application/json`；申请材料上传使用 `multipart/form-data`。
+
+## 签名原文
+
+按以下顺序拼接签名原文，不添加分隔符：
+
+```text
+message = timestamp + METHOD + path + query + body + requestId
+```
+
+- `timestamp`：`X-Timestamp` 的原始字符串。
+- `METHOD`：大写 HTTP 方法，例如 `GET`、`POST`。
+- `path`：以 `/openapi` 开头的实际请求路径。
+- `query`：Query 参数按 key 字典序排列，并拼接为 `k1=v1&k2=v2`；无参数时使用空字符串。
+- `body`：实际发送的原始请求体；GET 和文件上传请求使用空字符串。
+- `requestId`：`X-Request-Id` 的原始字符串。
+
+使用 `API Secret` 计算签名：
+
+```text
+X-Signature = HMAC_SHA256_HEX_LOWER(message, apiSecret)
+```
+
+JSON 请求必须使用同一原始字符串计算签名和发送请求；字段顺序、空格与换行须保持一致。
+
+## 示例
+
+```text
+timestamp = 1640000000000
+method = POST
+path = /openapi/card/v1/freeze
+query =
+body = {"uid":"U100","cardId":"C100"}
+requestId = req_1640000000000_abcdef
+```
+
+```text
+message = 1640000000000POST/openapi/card/v1/freeze{"uid":"U100","cardId":"C100"}req_1640000000000_abcdef
+```

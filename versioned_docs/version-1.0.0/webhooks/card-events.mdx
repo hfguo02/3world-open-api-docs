@@ -16,13 +16,13 @@ title: 卡片事件
 | `card.unblocked` | 卡片已解封 |
 | `card.terminated` | 卡片已关闭（当前能力暂不支持） |
 | `card.expired` | 卡片已过期（预留） |
-| `card.bind` | 卡绑定/验证码通知 |
+| `card.bind` | 卡片绑定或验证码通知 |
 
 ## 状态事件的事件数据（`data`）
 
 | 字段 | 类型 | 说明 |
 | --- | --- | --- |
-| `uid` | string | 合作伙伴侧用户 UID |
+| `uid` | string | 商户侧用户 UID |
 | `cardId` | string | 卡片 ID |
 | `status` | string | 卡片对外状态 |
 | `changedAt` | string | ISO-8601 时间 |
@@ -31,7 +31,7 @@ title: 卡片事件
 
 | 字段 | 类型 | 说明 |
 | --- | --- | --- |
-| `uid` | string | 合作伙伴侧用户 UID |
+| `uid` | string | 商户侧用户 UID |
 | `cardId` | string | 卡片 ID |
 | `code` | string | 激活码或验证码 |
 | `expirationTime` | integer | 过期时间戳，毫秒 |

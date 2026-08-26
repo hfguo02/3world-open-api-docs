@@ -4,7 +4,9 @@ title: 通用响应
 
 # 通用响应
 
-普通接口返回：
+接口返回普通响应或分页响应。
+
+## 普通响应
 
 ```json
 {
@@ -17,12 +19,14 @@ title: 通用响应
 
 | 字段 | 类型 | 说明 |
 | --- | --- | --- |
-| `success` | boolean | 普通接口成功标识 |
-| `code` | string | 响应码，成功为 `200` |
+| `success` | boolean | 请求是否成功 |
+| `code` | string | 业务响应码；成功为 `200` |
 | `msg` | string | 响应描述 |
 | `data` | object / array / boolean / null | 业务数据 |
 
-分页接口使用相同的 `code`、`msg`、`data` 结构，`data` 为：
+## 分页响应
+
+分页响应包含 `code`、`msg` 和 `data`，其中 `data` 的结构如下：
 
 ```json
 {
@@ -34,4 +38,4 @@ title: 通用响应
 }
 ```
 
-分页响应类型不额外返回 `success` 字段。认证失败、参数错误、限流等情况仍返回 `code` 和 `msg`，具体错误码见[错误码](../reference/error-codes.mdx)。
+分页响应不包含 `success`。鉴权失败、参数错误和限流等异常响应包含 `code` 与 `msg`，具体含义见[错误码](../reference/error-codes.mdx)。

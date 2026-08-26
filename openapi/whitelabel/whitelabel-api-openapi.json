@@ -3,10 +3,10 @@
   "info": {
     "title": "3World 白标卡服务 API",
     "version": "1.0.0",
-    "description": "面向 3World 合作伙伴的白标卡服务 API。接口版本以路径中的 v1/v2 为准。文档页面仅展示接口契约与示例，不发送真实请求。"
+    "description": "供白标商户对接卡片申请、卡片管理、账户授信、余额查询和交易查询。"
   },
   "servers": [
-    {"url": "https://dev.3worldglobal.com/wapi", "description": "Sandbox"},
+    {"url": "https://label.3worldglobal.com/wapi", "description": "Sandbox"},
     {"url": "https://www.3worldglobal.com/wapi", "description": "Production"}
   ],
   "security": [{"PartnerSignature": []}],
