@@ -9,8 +9,8 @@ const config: Config = {
   tagline: '3World 白标卡服务 API 文档',
   favicon: 'img/favicon.ico',
 
-  url: 'https://docs.3worldglobal.com',
-  baseUrl: '/',
+  url: 'https://hfguo02.github.io',
+  baseUrl: '/3world-open-api-docs/',
   onBrokenLinks: 'throw',
 
   i18n: {
