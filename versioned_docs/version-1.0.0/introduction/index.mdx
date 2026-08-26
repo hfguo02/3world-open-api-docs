@@ -4,6 +4,8 @@ title: 接入指南
 description: 维护 3World 白标卡服务 V1 集成。
 ---
 
+import Link from '@docusaurus/Link';
+
 # 3World V1 接入指南
 
 白标商户可通过 V1 API 维护卡片申请与管理、账户授信、余额与交易查询，并通过 Webhook 接收业务状态通知。
@@ -14,8 +16,8 @@ description: 维护 3World 白标卡服务 V1 集成。
 
 ## 接入路径
 
-1. 阅读[快速开始](./introduction/quickstart)并准备测试环境。
-2. 按[鉴权签名](./introduction/authentication-signature)生成请求头与签名。
-3. 从 [API 文档](./api) 选择业务模块并实现接口。
-4. 配置 [Webhook 事件](./webhooks)，接收异步状态通知。
-5. 根据[通用响应](./introduction/common-responses)和[错误码](./reference/error-codes)处理接口结果。
+1. 阅读<Link to="/v1/introduction/quickstart">快速开始</Link>并准备测试环境。
+2. 按<Link to="/v1/introduction/authentication-signature">鉴权签名</Link>生成请求头与签名。
+3. 从 <Link to="/v1/api">API 文档</Link> 选择业务模块并实现接口。
+4. 配置 <Link to="/v1/webhooks">Webhook 事件</Link>，接收异步状态通知。
+5. 根据<Link to="/v1/introduction/common-responses">通用响应</Link>和<Link to="/v1/reference/error-codes">错误码</Link>处理接口结果。
