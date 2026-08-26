@@ -1,0 +1,69 @@
+---
+id: list-application-products
+title: "查询可申请卡产品列表"
+description: "查询可申请卡产品列表"
+sidebar_label: "查询可申请卡产品列表"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVltPG0cU/ivWPNv4EvWFN0SqBqVKLUxSIgtFw+5gb7q3zswCrmUJelGA1gGJRCQNauKmEXloQnqlikX7Y8quzb/oObNrdu2lsdX6xTsz5zvnzPnOZZpE0pog01Xitzu97Xu9B7/0j0/IUpY4LuNUGo49p5NpYhpCzriuaWhqr8wd3dOkIFniUk4tJhlHLU1iwwLkXVpjNzwLzg0blp96jDdgIbQ6syiZbhLZcFHOsCWrMQ5HlmEbFiCmi1misxXqmRK+W7gQGjdcNAsA/3Tf326fd37rPdskreyQwYrxGfuPFi26Hn6/V0iYLxVS9oPjXTDef/3GP30YPHxDWhAqzoTr2IIJNFMqFPBvBLW15+88BZuaA+ZtiRI0Dmf+rkCxZsJbapofraiIRn47y3eZJjHgHKmRRmhOc3SWuJ2Q3LBrJBW1/bb/9sFZ93kYNWKJ2qSg/vGvwaP7CNKpTAbyXxxSzDuXBvydTMYMjoemSMgS6UhqlkHFJPCNLsCTwFnHC0kZg4xMbnQj8EhIKOcUk86QzMJgpLNXhRTAQfs1aY0/loY0UTFebJ4JTErM+XczMBlPY1wfx3LYAGYny7525+ztkb+/GSdghL+hindivL/X7h2pwGuU6wsKlAYzGwu5Sm7NzS/cnPkQdsrXblfmZuFz6RLV2PV+6vrffa30epwzW2tM4NQfm72j9jBL4aXI/6QdW8qIyiH+CVunlmuyuPxV04mqmlQ8TWMCW/OA4kFJFpNFVioMFU1xuBKKA3R1hGsyOzN/9c4goHeuXb9KRtgk5XpDQGMzM7NAUiaUiPmKyUhGm6BYa6mlflmynuMMOriQOTjmDVcyGEIr1BQseSaMmo0HknssVeNPX/SPv/d3j8OJFqfQ1kG/8xKzZB0asQDhcG59wtCLy+xmySo1PRbZx/IblY38uBBEf5BEGIt1B6dnjakKorIOizzUkU1dI58cAKulvBvPVMH46mCgetwEUF1KV0zn8zpbnbqy5nBTr5nOMjWnNMfKr4G2VH5WqK0vO+uqXwzrWFtbm1BHlH24wPsIBoQZsqH8KlMubcYrcHcqPQ7Xri4lhSo4ysJmkRaN245rXGeNwdCuM6qrrhsN9cVcjEkVzd43wcHv/l9fnXe6we7e2Z9PMou5yFJuTv97Y3MxN1Oey4F69b1ggDcSCket5iPqUPBzVZKGvRJOrajyrnyMEcr0Hp8Gz+5B+gSHbX+nkwGVSDSwE7pRnCpOFVLOqd1MOOF621vB4Y/B/Rf+7nMw5p/83Dvqnj/+wX/1yD982Xu1fdY9ydwqZfpfnPo7T3rffhkcHCFmAFDt0hHSouqJEIVmbH4POXQRbwlpn3dNCuEGtSovmlFiVkmUmABOpCbethTXuMAeWgd3ENBsLlPBbnKz1cLt8M2FyaEbgi6biaId8ebiGTT8Cshe7mZYb/GTMiozonJ7clOjr4ax1qL3ZGxuCRfcQHsq3bODjI07yAw0X1cmUKln3lBn+OD9Bci+fwBNKHwR
+sidebar_class_name: "get api-method"
+info_path: docs/api/3-world-白标卡服务-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"查询可申请卡产品列表"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/openapi/application/v2/products"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"pageNum","in":"query","schema":{"type":"integer","minimum":1,"default":1},"description":"当前页码"},{"name":"pageSize","in":"query","schema":{"type":"integer","minimum":1,"maximum":50,"default":20},"description":"每页记录数"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  responses={{"200":{"description":"成功","content":{"application/json":{"schema":{"allOf":[{"type":"object","properties":{"code":{"type":"string","description":"响应代码"},"msg":{"type":"string","description":"响应说明"},"data":{"type":"object","properties":{"pageNo":{"type":"integer","description":"当前页码"},"pageSize":{"type":"integer","description":"每页记录数"},"totalPage":{"type":"integer","description":"总页数"},"totalCount":{"type":"integer","description":"记录总数"},"data":{"type":"array","items":{},"description":"响应数据"}},"description":"响应数据"}},"title":"PageResult"},{"type":"object","properties":{"data":{"type":"object","properties":{"data":{"type":"array","items":{"type":"object","properties":{"productCode":{"type":"string","description":"卡产品代码"},"productName":{"type":"string","description":"卡产品名称"},"cardType":{"type":"string","enum":["VIRTUAL","PHYSICAL"],"description":"卡片类型"},"currency":{"type":"string","description":"币种"}},"title":"Product"},"description":"响应数据"}},"description":"响应数据"}}}],"title":"ProductPageResult"},"example":{"code":"200","msg":"Success","data":{"pageNo":1,"pageSize":20,"totalPage":1,"totalCount":1,"data":[{"productCode":"CARD_PHYSICAL_HKD","productName":"Physical Card HKD","cardType":"PHYSICAL","currency":"HKD"}]}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

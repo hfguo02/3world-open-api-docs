@@ -1,1 +1,0 @@
-{"title":"Body","body":{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["credentialId"],"properties":{"credentialId":{"type":"string","description":"凭证 ID(base64url)，指定要删除的 passkey"}},"title":"PasskeyRevokeVo"},"example":{"credentialId":"AbC123"}}}}}

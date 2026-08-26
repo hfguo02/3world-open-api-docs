@@ -1,0 +1,43 @@
+---
+title: 快速开始
+description: 完成第一个 3World API 请求。
+---
+
+# 快速开始
+
+## 环境
+
+| 环境 | Base URL |
+| --- | --- |
+| Sandbox | `https://dev.3worldglobal.com/wapi` |
+| Production | 不对外公开 |
+
+## 接入前提
+
+3World API 不使用登录 Token，而是使用 `Partner ID + API Key + API Secret` 对每个请求签名。请先向 3World 获取这三项凭证，并确保 API Secret 只保存在服务端。
+
+## 第一个请求
+
+下面的请求查询 V1 合作伙伴余额。签名字段中的 `path` 必须使用实际请求路径，`body` 为空字符串。
+
+```bash
+curl --request GET \
+  --url https://dev.3worldglobal.com/wapi/openapi/account/v1/partner/balance \
+  --header 'X-Partner-Id: YOUR_PARTNER_ID' \
+  --header 'X-API-Key: YOUR_API_KEY' \
+  --header 'X-Timestamp: CURRENT_UNIX_TIMESTAMP_MS' \
+  --header 'X-Request-Id: UNIQUE_REQUEST_ID' \
+  --header 'X-Signature: HMAC_SHA256_SIGNATURE'
+```
+
+`X-Signature` 的计算方式见[请求签名](./request-signing)。API 页面中的代码用于复制和集成，不会在浏览器内发送真实请求。
+
+## 推荐维护流程
+
+1. 按 V1 API 文档核对现有调用路径和字段。
+2. 保持签名原文与实际发送的请求完全一致。
+3. 使用申请查询和 Webhook 跟踪异步状态。
+4. 使用卡片、账户和交易接口维护已有业务。
+5. 新增能力前先评估迁移到 V2，不要在同一流程中混用两个文档版本。
+
+下一步阅读[认证方式](./authentication)、[请求签名](./request-signing)和[通用响应](./common-responses)，然后进入 [API 文档](../api)。

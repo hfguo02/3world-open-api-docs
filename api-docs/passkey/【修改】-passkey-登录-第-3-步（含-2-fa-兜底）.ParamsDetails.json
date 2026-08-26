@@ -1,1 +1,0 @@
-{"parameters":[{"name":"deviceId","in":"header","required":false,"schema":{"type":"string"},"description":"设备唯一标识，可选"},{"name":"platform","in":"header","required":false,"schema":{"type":"string","enum":["iOS","Android","Web"]},"description":"客户端平台。枚举：iOS/Android/Web"}]}

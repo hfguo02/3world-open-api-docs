@@ -1,0 +1,68 @@
+---
+id: upload-application-file-v-2
+title: "上传申请材料"
+description: "上传申请材料"
+sidebar_label: "上传申请材料"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVltPG0cU/iureWolGxunrSLeDGkiihosTFMkhKLx7mAv3VtnZjEIrUTSC5figBRCoNAWlLT0oSlNW0EUh+bH1LsmT/0LPWd3ba+xpaC+9cHyzuy5fHPO953ZJSJpWZChaeLXjpprK83tPy5OzshMitgO41TqtjWqkSHiOoZNtbzjGLoa7t7UDXYnR1KEs89dJuSwrS2SoaVwqXMGPpK7LEVU25LMkvjKdA2pO5TLzKzNzbRGJcVtoVaYGT7JRYdBLrs0x1QZh45iTRPaSQ2AUmQW8k+iffSIiB2OmKXOBAbrduhEF5LrVhncNCZUrjtoANvRwf3aI3/7pPFiOThcuTj5mniJRH1CMMs1Edzojbsj+Ykbd29OjN+ehP3Wejg/MgbLQr5YLIxPTCLIflmD77aCnb3m87r//TetlP3SYdkolJKUdIvyxZ4zfFT48JYSrO4ohdu3lMbLjYvX+/7qabCz0qif/vNqIzhY9p8eK+8rHw8Tz4M8bIGaTpTqUrVIvlDIZXMfZK/DL5sdTBZ8qHOeFlTiUCEcm8uBOaesvBPBSym6ScssM+ewckrJXX9PGRt+FxN72Fkwt0TUqVw2i3/dZwlWt/z1H0gXgRIgM3MCzZLsoYYxPgvd6OVRNzGEq6pMiESBS7ZtMGr11BNb8/x+sHvib/0U4/EQkNa3O92+/sOa/3K7UX/SPLyHXqYoX9Xp4uTPYPcBOrUk0s8qePRbUPuVYDWlLsMujDvMmmACZAbObyvDFWKn3hLifyyxecaFHjEozqgDzcqM96CO5NNcWw0OfvE3z7oKHg9BoPTM5c12H5Iqa1OvNRuRSSH/Y4KQYmzR6f1/VWb7hIOeF4luIR3P6jSzVL7oSJyss9QQLPlO6GWrM767a9F4sd54dZisKHZoAfSJqUQovs8Y3AN9cwEmargszokMvWwb524bIgYsrclkxcbDO7YIaUhlBVYZIKNFHT2THAzzuQwWBEsoGMcqhLBcboBHRUpHDGUyGpsfuFa1uaGVDbtEjQHVNjNVCNXT/iK1tJK9EAqqO0a1Wr1ijAK3NVcNF3gawVSX63IxxFWA+9BivAgnp9LlcOjpmaRREedbJLde0zZ5IesYwwtBx3wVRrWQyRY18e1UuuPTM3K2NoLHp/7rr94c1YPNrcZf+8pUOs6UHtX+Xr43lc4XRtMQPnye1AGNBEaHq4m4cWh4P5SGbs3aIbBYDdc+xQopzb1z0Dt8YwQHNX/9SIGQSY6SwYHBgWwPuHBX8c8f+mu1SIHBgx/9zSeQzD/7vXlcf7P31H+26x/83Hy21qifKXdyysUX5/76fvPbL4PHx+jTckApIn1MGqo+Lk1fRneBaNdYAtEzjkGhxBAq5MJSzMRpEjMRnBNcxBPmYoEKnEwVpC9YLy2VqGCfcMPzcBtqyJENM0h8rtOSEdEg1epkR1cj0W2Yjj99Yp30/bTqCCwPM8WRCfOei7RLZIXxIg6QUvxFZ0ZTCgOHcVOdRwTpef8CLlPzyQ==
+sidebar_class_name: "post api-method"
+info_path: docs/api/3-world-白标卡服务-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"上传申请材料"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/openapi/application/v2/files"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"multipart/form-data":{"schema":{"type":"object","required":["applicationId","fileType","file"],"properties":{"applicationId":{"type":"string","description":"申请单唯一标识"},"fileType":{"type":"string","enum":["ID_CARD_FRONT","ID_CARD_BACK","PASSPORT"],"description":"申请材料类型"},"file":{"type":"string","format":"binary","description":"JPEG 或 PNG 二进制文件，最大 5 MB"}}},"example":{"applicationId":"APP202608260001","fileType":"PASSPORT","file":"passport.jpg (binary, image/jpeg, 284 KB)"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  responses={{"200":{"description":"成功","content":{"application/json":{"schema":{"allOf":[{"type":"object","properties":{"success":{"type":"boolean","description":"请求是否成功"},"code":{"type":"string","description":"响应代码"},"msg":{"type":"string","description":"响应说明"},"data":{"description":"响应数据"}},"title":"OpenResult"},{"type":"object","properties":{"data":{"description":"响应数据","type":"object","properties":{"applicationId":{"type":"string","description":"申请单唯一标识"},"fileType":{"type":"string","enum":["ID_CARD_FRONT","ID_CARD_BACK","PASSPORT"],"description":"申请材料类型"},"version":{"type":"integer","description":"文件版本号"}},"title":"FileV2"}}}],"title":"FileV2Result"},"example":{"success":true,"code":"200","msg":"Success","data":{"applicationId":"APP202608260001","fileType":"PASSPORT","version":1}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

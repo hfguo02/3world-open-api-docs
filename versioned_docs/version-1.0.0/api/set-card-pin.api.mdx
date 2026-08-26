@@ -1,0 +1,68 @@
+---
+id: set-card-pin
+title: "设置交易 PIN"
+description: "设置交易 PIN"
+sidebar_label: "设置交易 PIN"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVl1PG0cU/SvWqI82a4c2D34jtA9WpWJhoiIRKo13B3vT/erMLAZZlpJIEIhqsARtqRIpQWmiPLQ4raqmSurkx9S7pv+i986OvcaLCuUBdmbv57nn3KVNJG0IUl4jUfd0tP9wdHY66u2S9TzxA8aptH2vYpEyEUwuUm5VbY/kCWffhEzIW761TcptdbQ5AzPJQ5Ynpu9J5kl8RYPAsU0VxrgrfA/vhNlkLsUnuR0wiO3X7zJT6rhJoDUS2hbcmJCzgg8BJIaiAo5lSZsJ9EebNIyQ3PYaYGsxYXI7wKRwPTp+Fe+9iY77wz/vxc8envd3SWcS+ErvBJVZb6zmEteASsk4un11547Vvtn5KBtv55fhoDt8+1N8cpSrVr4gHQgnbelgoKWAeRrlKuXUxVRsi7oBvtXtktulYrFYSrEpk8WF5U/Hl6oyUrox//EnNyE2RudMBL4nEshuFIv452JR8V4vevSU/I/JUcdZ2oAxZWd4cUIiNE0mxBRYdd93GPUywJz338S/PohP+lHvpa4Hx+Rb7BpDOupGb4+H756Pnt1HL1c0rut03v89PjlAJ4tKmoUmsYq/ex13zzKzWmYidCQ4XwXDOPYVGMwk66yn6W4lLpOM07yYgDyWH2KmJq2hIDVtMe4SDTsJO7YKWs0F5pl8O5Aovw3qCDb9TtgNLxX4zOTO3o8GZ1OUxuKARgJeC8WRrxnsiUsz5ckmdUKmMyKQs7Y688RQlQ7AuEw2fWR/4AuZaK8JJwNg92hgG6gOY7NkgCAMWF5gIRjfZDypKOQOGDelDETZMCy2OTff8rljNRy/Tp0503eNFkTJTKhGPavub6mRX4zRarWuGaPKfSs01QEbEcwMuS23VV0ge+kxXoOmqQw59Lu2Pm1UQwUmnMqaTvgFWT8HGPNELYMmoxbjcPKoi29XC6lPhoG9b+Mf/og+7Pxz+i4+7A3fP86tFnSmQsX6+9791cJCtVKA8Op5xYZqJDBRnZb1zNDwgVILbo7l9Gvx2ewym2hzsszSZaqK18cO9rLhqx61Iua/RLBzox8HsJdhTcdPutGj0xxUh2SBQScdleaKc8VMn+o2Fx3sRoe/jfb34ic/xwcvosPnUHf8/Wt83nkBG2n410m0szccfICPSDQ4iva7ibFqL6+o51K1GjW2l2jhQuLJiCRIxAgcCk1CIEWltubwGtEc1rBgO+PVjkyQ+CFsIuvBtN2uU8Fuc6fTwWtAmiOT1lEv3KZ1J6FQfsyCVI6Lya4vrGBBE3ll934qygVYIoH8T9tpYVaXaitgXNf/JbjJWuK0hV96+F0mBP/LkMmaaCd3beJQrxHSBtomMfHnX324Sgo=
+sidebar_class_name: "post api-method"
+info_path: versioned_docs/version-1.0.0/api/3-world-白标卡服务-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"设置交易 PIN"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/openapi/card/v1/pin/set"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["uid","cardId","pin"],"properties":{"uid":{"type":"string","description":"用户唯一标识"},"cardId":{"type":"string","description":"卡片唯一标识"},"pin":{"type":"string","pattern":"^\\d{6}$","description":"六位交易 PIN"}},"title":"OpenCardPinParam"},"example":{"uid":"U10001","cardId":"CARD10001","pin":"123456"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  responses={{"200":{"description":"成功","content":{"application/json":{"schema":{"allOf":[{"type":"object","properties":{"success":{"type":"boolean","description":"请求是否成功"},"code":{"type":"string","description":"响应代码"},"msg":{"type":"string","description":"响应说明"},"data":{"description":"响应数据"}},"title":"OpenResult"},{"type":"object","properties":{"data":{"type":"boolean","description":"响应数据"}}}],"title":"BooleanResult"},"example":{"success":true,"code":"200","msg":"Success","data":true}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

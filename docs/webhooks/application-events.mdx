@@ -1,0 +1,42 @@
+---
+title: 申请事件
+---
+
+# 申请事件
+
+事件分类：`APPLICATION`
+
+| 事件类型 | 说明 |
+| --- | --- |
+| `application.submitted` | 申请已提交 |
+| `application.approved` | 申请已通过 |
+| `application.rejected` | 申请已拒绝 |
+| `application.cancelled` | 申请已取消 |
+
+## 事件数据（`data`）
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `uid` | string | 合作伙伴侧用户 UID |
+| `applicationId` | string | 申请单 ID |
+| `status` | string | `SUCCESS` / `FAIL` / `PROCESSING` / `CANCELLED` / `DRAFT` |
+| `cardId` | string | 卡片 ID，可为空 |
+| `reason` | string | 原因，可为空 |
+| `changedAt` | string | ISO-8601 时间 |
+
+```json
+{
+  "eventId": "019be5c92817775c9efc4967016ac4ea",
+  "eventCategory": "APPLICATION",
+  "eventType": "application.approved",
+  "eventTime": "2026-01-24T13:00:00.000Z",
+  "data": {
+    "uid": "U10001",
+    "applicationId": "APP202601240001",
+    "status": "SUCCESS",
+    "cardId": "CARD10001",
+    "reason": null,
+    "changedAt": "2026-01-24T13:00:00.000Z"
+  }
+}
+```

@@ -1,0 +1,18 @@
+{
+  "logo.alt": {
+    "message": "3World",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.接入指南": {
+    "message": "接入指南",
+    "description": "Navbar item with label 接入指南"
+  },
+  "item.label.API 文档": {
+    "message": "API 文档",
+    "description": "Navbar item with label API 文档"
+  },
+  "item.label.Webhook 事件": {
+    "message": "Webhook 事件",
+    "description": "Navbar item with label Webhook 事件"
+  }
+}

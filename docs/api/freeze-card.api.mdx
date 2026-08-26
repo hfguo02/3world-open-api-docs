@@ -1,0 +1,68 @@
+---
+id: freeze-card
+title: "冻结卡片"
+description: "冻结卡片"
+sidebar_label: "冻结卡片"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVltPG0cU/ivWPNusHd78RmgfUCqBbNIiIVSNdwd7071lZhZDLUtJ2hJANbEEUUhBCijN5SGJ26oqVS3aH1PvLvkXPWd3vDa7VaF+sL0z5/qd7zt2h0jaFKS6SoLeWbT7OPpwFvW3yVqRuB7jVJqus2CQKlnnjH3N5ik3SJFwdt9nQt52jS1S7cSPJmdgJrnPikR3HckciVfU8yxTj8No94Tr4JnQW8ym+E1ueQxiu417TJcqbhJolfgmZtIhIeSHcjyOBUmTCfTE20kAIbnpNMHcYELnpofp4Dg6fBvunAeHg9HvD8LTx5eDbdJNQ17rneCR9eaMqjay3jbd/Iw5Tdki1dlyNlh40BtdnAT7L4LjU9KFONKUFrovesxBVGtx3MUx5kuUUxvzsU1qe2ipeiZ3K+VyuTKBpkrm52qfjA/H5RFfMP6lmhMk7MalC891RALgrXIZPzJV7vSDvRfkf0yQWtbiOowrP8ur8xK+rjMhpnBruK7FqJOD/XJwHv78KDwaBP3Xqh4cmmuwG4zsoBf8cTgavoxOH6KXLZo3dboc/Boe7aOTQSXNQ5NYhU9/CnsfcgOsMeFbAHPxOhjGsa/BIJOsuzZJdztxSTNOEyQFeSxDxCyetIKC1JXFuEs07Cbs2CwptpSYo/MtT6IM16kl2PSdMJvOROiZqreH0fAgkQ3BwoBCAq5EzI+vGOyKf81SJBvU8pnKhiBmbVXW1DAuG0CxmWy5KAHPFTHYFNVHNIDcoZ6poUS0jYqWLC8wAFFsMJ4U5HMLbFtSeqKqaQbbmJltu9wympbboNaM7tpaG4LkhlOnjtFwN+NpX43RbrdvGGOJu4avxw/Yh2C6z025FdcF0pcO43XomUqfQ7ura9NGdRRfQqe8aUotyHoHUCwSE/O1GDUYhyeH2ni7Upr45MbY/z589lvw13cfz4bhk/7oz+PCSkllKi0Yfz94uFKaW1ooQfj4+7IJ1UggYfxUUyNDw0exUHBp1CY/GJ9mF1oqy3ShpSfpNlMnXWxn3Y3bVHqY/QLxLkTPL2BHA/fCk16wd1aAApEuMOukqcpMZaacazU+LQQXB8FuL9rdCU/ehfuvgicvofTg/JfozfDj8x+D90fBydvo/e5oeF74/Fbh8puLYO84+uHb8Nkb9Bk7YHFIQ5vGK1IBndHElfTprCRIRfMsCqOCIDGnOorLq0RxWeGDTeGeV4wGWrSQ+mDX6TSoYHe51e3iMeDNkU9rKBpu0oaVEKk45sJEk/PJsi8tYzWpxvKLf6LMOdginvxP22l1Li3Wl8G4of4u2Mle4rSNI4b3KiH4d0Mmu6KTnHWIRZ2mT5tom8TE1z9VSlMe
+sidebar_class_name: "post api-method"
+info_path: docs/api/3-world-白标卡服务-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"冻结卡片"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/openapi/card/v1/freeze"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["uid","cardId"],"properties":{"uid":{"type":"string","description":"用户唯一标识"},"cardId":{"type":"string","description":"卡片唯一标识"},"reason":{"type":"string","maxLength":30,"description":"操作原因"}},"title":"OpenCardReasonOperationParam"},"example":{"uid":"U10001","cardId":"CARD10001","reason":"user_request"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  responses={{"200":{"description":"成功","content":{"application/json":{"schema":{"allOf":[{"type":"object","properties":{"success":{"type":"boolean","description":"请求是否成功"},"code":{"type":"string","description":"响应代码"},"msg":{"type":"string","description":"响应说明"},"data":{"description":"响应数据"}},"title":"OpenResult"},{"type":"object","properties":{"data":{"type":"boolean","description":"响应数据"}}}],"title":"BooleanResult"},"example":{"success":true,"code":"200","msg":"Success","data":true}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

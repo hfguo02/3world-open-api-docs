@@ -1,0 +1,68 @@
+---
+id: activate-card
+title: "激活卡片"
+description: "激活卡片"
+sidebar_label: "激活卡片"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVl9PG0cQ/yrWqg+tanNniCLFb4T0AVURCJKWyHGl9d1iX3q+u+7u2SDXEkmbBCMISAGFNEgBpW14aKCtUIkCNB+m3Jk89St0Zu98/ocC9cP5dnf+/GbmN7NXJ5KWBMnlSbCy02o+bu3ttNYekUKauB7jVFquM26SHKGGtKpUsjHKTZImnH3nMyGvu+Y8ydXV0uIMBCX3WZoYriOZI/GIep5tGcqQdk+4Du4Jo8wqFN/kvMfAulu8xwwZ240M5YlvoScDHI7ji0cdXFar8GRzHkjdADyI1OOIVVpMoElU61gWkltOCVRMJgxueYgDtlvru+HiYbC+f/p2Idx+fLb/iDQSXxdqR6nq10aA56h6VErGUe2bu3fNzz8ZtLa3HG4cgM1g9VChgBAvC2GvGTzcbW3fR72upHwcxqd6Ppu5Vvg+m9czw4XPNIBVH26cA0z5CLea4cZiuPXy3+PlcPs4OF49ffsudfOmducOaYBbaUkbPU14zEF2jMZMmaScViJctOLZLKkNuZ3VdT3bqW2OjI1O3WhvqjSSK/q1qyNXdfXLDo9ciUufI7DoJQBuaSM6YEE0nAnPdUREhWFdx7/eqMLFtWDpJfkfJKW2PTELjBykay/zhG8YTIiu7Bdd12aKt70YzvYPwz8ehJv7wdqvMR4svGueW7q+qjxdCd6tnx69isteEaXLKp3tH4SbT1DJpJIOpiaSCjd+D1f2Bmo7xYRvS1C+KA1t2xfkoM9Zo9Bxdz1SSTx2UyhJcnvSYM5UpeNUkOlYoh0lCjYidsxl4sGVYY7B5z2Jk2aW2oJ1nwmr5HRmWR973i+EB0dRZygeAoUEHAnFj28ZjMNzvaRJldo+i71hEvtlY6+JoIINSakwWXaxSTxXyKiRy7DSIOUO9SwNm0irZrX2hAYRwXiV8QiSz22QLkvpiZymmaw6NFJzuW2WbLdI7SHDrWg1MDNQnmnqmEV3TtW710atVrukjUnumr6hFhiJYIbPLTmvcMF4kA7j0xA1lT6HgPOFbqFpbL+IUIOiCbnA65eQxzSx0F+ZUZNxWDm0gqczmY7OAP3WlsNnfwXvH37YOQpX107/fpGaycSeMuPmPwv3ZzKjk+MZMK/eb1mARgIN1WoqLhoKPlCtgmNjqnMrftE/9JLGTIZe12h2egTUnEuWPaMu3m1gwLOuSkTcMyNfY0VSrecncCMBP8OtlWBpJwUhIKWADVHY2aHskD6QDLWbCk6eBs2VVhOG/W/hk1+C1VcQXHD4Z+v10YfnPwdvNoOt3dab5unRYeqr4dTZDyfB0ovWTz+Gz16jTltBXYVA1Up0Hcal6OubHvdJNSW0k+bZFIoJRhTr6jHf8yTme5xBDApvi4T1QJ0yNghI1utFKthtbjcauA014ci5ArYWt2jRjsiWbvOl07lj0ZWQuYV4kk4cvB46/TsKs8aTH5Xt7uHJielbIFyMv5sq0fTitIbfPvDMEYJfXjKaKPVor05s6pR8WkLZyCb+/gNVZLLf
+sidebar_class_name: "post api-method"
+info_path: docs/api/3-world-白标卡服务-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"激活卡片"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/openapi/card/v1/activate"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["uid","cardId","pan","cvv","expireDate"],"properties":{"uid":{"type":"string","description":"用户唯一标识"},"cardId":{"type":"string","description":"卡片唯一标识"},"pan":{"type":"string","pattern":"^\\d+$","description":"完整卡号"},"cvv":{"type":"string","description":"卡片安全码"},"expireDate":{"type":"string","pattern":"^(0[1-9]|1[0-2])/\\d{2}$","description":"卡片有效期，格式为 MM/YY"}},"title":"OpenCardActivateParam"},"example":{"uid":"U10001","cardId":"CARD10001","pan":"4096360000001234","cvv":"123","expireDate":"12/30"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  responses={{"200":{"description":"成功","content":{"application/json":{"schema":{"allOf":[{"type":"object","properties":{"success":{"type":"boolean","description":"请求是否成功"},"code":{"type":"string","description":"响应代码"},"msg":{"type":"string","description":"响应说明"},"data":{"description":"响应数据"}},"title":"OpenResult"},{"type":"object","properties":{"data":{"type":"boolean","description":"响应数据"}}}],"title":"BooleanResult"},"example":{"success":true,"code":"200","msg":"Success","data":true}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

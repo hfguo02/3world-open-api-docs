@@ -1,0 +1,69 @@
+---
+id: get-card-detail
+title: "查询卡片详情"
+description: "查询卡片详情"
+sidebar_label: "查询卡片详情"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVltPG0cU/ivWPLWSjW2IUMuba1ywSGzLaxICiqLBHmDT9e5mZpaLLCRIQrg0BFdQkRTUhKYJeShx00YhikX6Y8qu4V/kzOwuvqa4yNLODOd+vnMpIY6nGRqYQPbmQW19tfbmoFZ+iG4FkWESirlq6MkCGkDThMcxLQwSjlUNBZGJKS4STqjgLSEdLkCVBxIgDyJVh9tdi9AFuFBy11IpATGcWiSIWH6GFDEaKCG+YAo2xqmqT6PFICoQlqeqKdTCu2uSvVM5/bDkPF89qzxEi7eEPGYaOiNMiOiNRMSnmdFZK9sbz0B13tA50bmgwKapqXnpUfgOE2SlBkuwpqWnpCueTcbkHZLnwlMqIsFVVx2z8nnCWIPxk4ahEayjVuPPKsfO23vOk4pdfuXZsygMKpB2z9sc3960P+6cVl/Uni8LriKb7pbprPLOefJYxhJz3B4al8r5+U9n8w1aBDKuck1ITZtEzxJmaRyYLwtDF7KDl4jwsHK5Wx1AEESW2gVrbee1s3bcyso45hbrxE10qyhKIakoo4lBeIjFc8nrsZw8f59NjydScPjuajo+Ip/iV9OKPMA3B5/EWCaZ9YgTifFkagiOo6mGi+T13xsuuUT2WjIVy7m3bCKTzuZug1TldiabjicUxecZSaVvpER5tgTpZNte36xtvHeWJGBEcHPSuy97eT2ZzY3GrsJLZvimkozDsV2u2xTeVu1ff5RyLUqJnl/oIm0flmuHm4LHxHp/V2m2t47BCXvl6PTEZ7zSNWP5sb235zEK75UvNJlG/5UYXK/FFIh+PJYdlAFOplOZ2M3/jDXEpPqgVl31VQ0bWoHQlGyBl1nrPFoG/tOPH+3DbbssrVUZs0hO7cw9ZdAihv4lKo6EuKD6Qo6OPtlbPzm7789330nDNIP9P6m6pWl4UvQCt013LMOVv893j3wtDd1DDAd4EO258emioSAyj4umRpp6qKvHbYmykXudDikeRb2J+d0CiURFI5FIFHlNAI36V7+wm8q2Xgl1mDfiGA2PDCIfpOhK5Nv+vn7kYw9Fe/uuoGZA+bhpzTwaH46lhgJKTPSIhpyCY739ocg3od7+XDQyEBG/HrB4HDUlSUR/Uf4F0XxIjEzCeAhspAsmF7NzCmuMNP6PqdN6fai2wOzZy7PKb27OziqvnPsrAvjzMAsZELgz+wci3O+kK4hmsWYRT6eYBq20nu4LQmGDyD2sBDOGty/IKPIZuISh7+vYVMMiZuHZaLjgrxGM0Fl/h7CoBrQznJtsIAwksz19cwbVCtOaMYm1nrxRDM+BkDb8K1gvTBrzcmo1y5ibm+tSRoYaBSsvL8INRgAgKl+QdmUw5TqhCrgM+KLg7cStRiIJDHemtZNe1B5oHSEL/mo0QzAARxSdi52xUJ2nrfLKj6Dg7H9Wzg+qzlb59NNeYCzkaQolC/8uLY+FYplkCMTLs8ATlELRlLeslzFBeE+WrKpPGdIwr077bogIBWpPT2BGAmSc/U174yAAIkV+ITuuGdGeaE+kzTj5GvDGz/qas/+H8/ilvfUClNnHf9UOq+dPf7ePntj7r2tH66fV48D13sDZ/RN7Y6/2ywNn91Dw+Ayy5xuMF7FczrzQdIRykxEXMeaA8LCpYQixWBEEFkoeBieQh0GvcoVrUSlIIhHSOQOaBV2pNIkZGaVQjeLZXWIFDgoqE+2xXootRlzsmuirrLfxfh3osL0EO5vrltjFBu0VFpJ4nMVUdVszQC/oo6dexDFolyZv4GpbdpuKcyiRAyR8BiYrhkI=
+sidebar_class_name: "get api-method"
+info_path: docs/api/3-world-白标卡服务-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"查询卡片详情"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/openapi/card/v1/detail"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"cardId","in":"query","required":true,"schema":{"type":"string"},"description":"卡片唯一标识"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  responses={{"200":{"description":"成功","content":{"application/json":{"schema":{"allOf":[{"type":"object","properties":{"success":{"type":"boolean","description":"请求是否成功"},"code":{"type":"string","description":"响应代码"},"msg":{"type":"string","description":"响应说明"},"data":{"description":"响应数据"}},"title":"OpenResult"},{"type":"object","properties":{"data":{"description":"响应数据","type":"object","properties":{"cardId":{"type":"string","description":"卡片唯一标识"},"uid":{"type":"string","description":"用户唯一标识"},"status":{"type":"string","enum":["ISSUED","ACTIVATED","FROZEN","BLOCKED","CLOSED","LOST","EXPIRED","FREEZING","UNFREEZING","BLOCKING","UNBLOCKING","TERMINATING","REPORT_LOSS_PROCESSING","UNKNOWN"],"description":"当前状态"},"cardType":{"type":"string","enum":["VIRTUAL","PHYSICAL"],"description":"卡片类型"},"currency":{"type":"string","description":"币种"},"pan6":{"type":"string","description":"卡号前六位"},"pan4":{"type":"string","description":"卡号后四位"},"cardSchema":{"type":"string","enum":["VISA","MASTERCARD","UNIONPAY","UNKNOWN"],"description":"卡组织"},"cardHolderName":{"type":"string","description":"持卡人姓名"},"issueTime":{"type":"string","format":"date-time","description":"卡片签发时间"},"closeTime":{"type":"string","format":"date-time","nullable":true,"description":"卡片关闭时间"}},"title":"Card"}}}],"title":"CardResult"},"example":{"success":true,"code":"200","msg":"Success","data":{"cardId":"CARD10001","uid":"U10001","status":"ACTIVATED","cardType":"PHYSICAL","currency":"HKD","pan6":"409636","pan4":"1234","cardSchema":"VISA","cardHolderName":"ZHANG SAN","issueTime":"2026-08-26T10:00:00.000Z","closeTime":null}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

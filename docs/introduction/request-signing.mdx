@@ -1,0 +1,41 @@
+---
+title: 请求签名
+---
+
+# 请求签名
+
+## 签名串
+
+```text
+message = timestamp + METHOD + path + query + body + requestId
+```
+
+- `timestamp`：`X-Timestamp` 原样字符串。
+- `METHOD`：HTTP 方法大写，例如 `GET`、`POST`。
+- `path`：从 `/openapi` 开始的请求路径。
+- `query`：Query 参数按 key 字典序排序后拼接为 `k1=v1&k2=v2`；没有参数时为空字符串。
+- `body`：实际发送的原始请求体；GET 为空字符串，JSON 使用实际发送的 JSON 字符串，文件上传为空字符串。
+- `requestId`：`X-Request-Id` 原样字符串。
+
+```text
+X-Signature = HMAC_SHA256_HEX_LOWER(message, apiSecret)
+```
+
+JSON 请求必须使用同一份原始字符串计算签名并发送，字段顺序、空格和换行都必须保持一致。
+
+## 示例
+
+```text
+timestamp = 1640000000000
+method = POST
+path = /openapi/card/v1/freeze
+query =
+body = {"uid":"U100","cardId":"C100"}
+requestId = req_1640000000000_abcdef
+```
+
+```text
+message = 1640000000000POST/openapi/card/v1/freeze{"uid":"U100","cardId":"C100"}req_1640000000000_abcdef
+```
+
+请勿在日志、文档或代码仓库中输出 `API Secret`、完整卡号、CVV 或 PIN。

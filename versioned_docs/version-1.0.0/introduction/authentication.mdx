@@ -1,0 +1,19 @@
+---
+title: 认证方式
+---
+
+# 认证方式
+
+所有 `/openapi/**` 请求都必须携带以下请求头：
+
+| Header | 必填 | 说明 |
+| --- | --- | --- |
+| `X-Partner-Id` | 是 | 合作伙伴 ID，数字字符串 |
+| `X-API-Key` | 是 | API Key |
+| `X-Timestamp` | 是 | Unix 时间戳，毫秒 |
+| `X-Request-Id` | 是 | 请求唯一 ID，用于防重放 |
+| `X-Signature` | 是 | HMAC-SHA256 小写十六进制签名 |
+
+服务端校验合作伙伴、API Key 状态、IP 白名单、时间戳、Request ID、签名和 API Key 限流。时间戳有效窗口为当前时间前后 2 分钟；同一合作伙伴的 Request ID 会缓存 5 分钟。
+
+请求体为 JSON 时使用 `Content-Type: application/json`；上传申请资料时使用 `multipart/form-data`。

@@ -1,0 +1,69 @@
+---
+id: get-card-balance
+title: "查询卡余额"
+description: "查询卡余额"
+sidebar_label: "查询卡余额"
+hide_title: true
+hide_table_of_contents: true
+api: eJytVltPG0cU/ivWPLWSjS+Rooo3N6lalIcgLi0q4mG8O9ibrnc3M7OAa1mCtA0X1UAFLVCoEpIm5KGp0woVVIvmx9S7Nv+i5+yOr+sGq6qEZGbn3M/3nTNlImlekPF50jp/6W9cNC63/e2NxttTshAntsM4lYZtTehknOSZvEO5/iE1qaUxEicO5bTIJOOoXyYWHEDMNXS4Myz496HLeAkOnD10Dc7AiOQuixOhFViRkvEykSUHdYTkhpUnlTjRmdC44aBT+N7cfwUxefu1xuWq/3S9VXsMMh1PGkQz8f8586qnzc31fmcLaE84tiWYQBOZVAp/+hX9jV1v6wm41mxLMkuiBHUc09CC4iUfCBQr90RCTfP+YlA0FZOde8A0iTXlWHRphO6Eq2lMiJ7gc7ZtMmqRweBbtQv/t0f+Yc3bfaniqWBAOotmHkl8r+r9ud+oP28+XUOtosiPqtSqnfuH20EtqaTR0oRS/vdv/OqvpAJi0pAmWr3vMGuKCdeUQUffXYYRbMdHrini88bshgKP0CVqmDRnsjYHunYst5hjPFqlnRqYalwdXT/7CS0scvtLZmWLthvC5Abtx/Vmfe96/TulLW1JzVGV/dV616/mcs4srTRCXy/XmmdV1DGpkLMO1J7pWTlMcdHmRQo32B+WkEaRRYM4WfV2t/3jc/+HN/7BH9cH530omBWMt2t5MwwU329OYQiRK0jlttveMfavNx10ErZCi47J+ggZzpaQX8FUULQh00qiy4gAcGQ2nUql0jgkVBbkTnbqbvtjFFlwMwiX1AACApFuZ8kn9+6SSNsguMztROqDROb2TDo9nkrB3xh4/Rwzr2AzVhI4MpmQCbDDS47E2blITcF674SRt7pDdaDLT160as+g7ApwWDIYhAJuw9XwBcP4hjmKkyVqukw5RAwMyirHHUEMAFsGm6dgq70ULCNZgEMSAGNRx0hSTcMqJZcySax4MtdZW4C5pfbOcrkJSgUpHTGeTOpsaezWss1NPW/aoDCm2cXkMliLQGyaWnrOXglA229jeXl5RBuT3NZdLThgPoJBKw1ZCuKapFxajE9D7lS6HNKeX+gVmsZVErIiKtrhB3i9x0rtBVlgVA/mhFqfc4muToRCu98CXb2331yf1v2d3cZfx7G5hPKUmND/Xl2bS2QnJxJgPvh/BsgvJNAkOE2p1qHgo4DwhrVoB4Epnt36DCsUax5dAUEBOP5J1ds6jYFJbDR0JwwjPZYeS0WCC77GvKs9b7Pa3NzwT37xt194O8/BmXfxe/Osfn30s/f60Dt51Xy92ahfxD7NxFpfXXlbx80fv/YPzlCnrYD8dmwhizRY0ao0UUD3RdApsAScJx2TQn3BTgCEskLiPFFIRHaHWMTUMmoCwE8bkdDWAkSAKuVyjgo2y81KBT+HTxrEg24InA5dYg7E03l5kPem1Pvn/diQJRYfHnnIufDlpmhGAmz/J79D5u87/XbecV3XC3jgBvoOoB9vo7c7TbIwZx3ZoxV5cvVNiY8/mgEk/gMQ2z1S
+sidebar_class_name: "get api-method"
+info_path: docs/api/3-world-白标卡服务-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"查询卡余额"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/openapi/account/v2/card/balance"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"uid","in":"query","required":true,"schema":{"type":"string"},"description":"用户唯一标识"},{"name":"cardId","in":"query","required":true,"schema":{"type":"string"},"description":"卡片唯一标识"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  responses={{"200":{"description":"成功","content":{"application/json":{"schema":{"allOf":[{"type":"object","properties":{"success":{"type":"boolean","description":"请求是否成功"},"code":{"type":"string","description":"响应代码"},"msg":{"type":"string","description":"响应说明"},"data":{"description":"响应数据"}},"title":"OpenResult"},{"type":"object","properties":{"data":{"description":"响应数据","allOf":[{"type":"object","properties":{"uid":{"type":"string","description":"用户唯一标识"},"availableBalance":{"type":"number","description":"可用余额"},"frozenAmount":{"type":"number","description":"冻结金额"},"totalAmount":{"type":"number","description":"总余额"},"currency":{"type":"string","description":"币种"},"lastUpdatedAt":{"type":"string","format":"date-time","description":"最后更新时间"}},"title":"UserBalance"},{"type":"object","properties":{"cardId":{"type":"string","description":"卡片唯一标识"}}}],"title":"CardBalance"}}}],"title":"CardBalanceResult"},"example":{"success":true,"code":"200","msg":"Success","data":{"uid":"U10001","cardId":"CARD10001","availableBalance":100,"frozenAmount":0,"totalAmount":100,"currency":"HKD","lastUpdatedAt":"2026-08-26T11:00:00.000Z"}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

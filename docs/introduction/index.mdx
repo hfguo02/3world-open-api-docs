@@ -1,0 +1,23 @@
+---
+slug: /introduction
+title: 接入指南
+description: 了解 3World 白标卡服务的能力、版本和接入路径。
+---
+
+# 3World 开发者文档
+
+3World 白标卡服务为合作伙伴提供卡片申请、卡片管理、账户授信、余额查询、交易查询和 Webhook 通知能力。文档按实际对接流程组织：先完成认证和签名，再按业务模块查阅 API，最后配置异步事件通知。
+
+## 当前版本
+
+默认文档为 **V2**。V2 文档包含 V2 替代接口，以及仍然有效、尚未被替代的 V1 接口；已经被 V2 替代的低版本接口不会在这里出现。
+
+维护中的历史接入请在顶部版本栏打开 **V1**。V1 会在新页面中打开完整的历史文档，避免在同一次对接中混用两个版本。
+
+## 接入路径
+
+1. 阅读[快速开始](./introduction/quickstart)并准备测试环境。
+2. 配置[认证方式](./introduction/authentication)和[请求签名](./introduction/request-signing)。
+3. 从 [API 文档](./api) 选择业务模块并实现接口。
+4. 按需配置 [Webhook 事件](./webhooks) 接收异步状态变化。
+5. 联调时结合[错误码](../reference/error-codes)排查问题。

@@ -1,0 +1,202 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "3World 白标卡服务 API",
+    "version": "1.0.0",
+    "description": "面向 3World 合作伙伴的白标卡服务 API。接口版本以路径中的 v1/v2 为准。文档页面仅展示接口契约与示例，不发送真实请求。"
+  },
+  "servers": [
+    {"url": "https://dev.3worldglobal.com/wapi", "description": "Sandbox"},
+    {"url": "https://www.3worldglobal.com/wapi", "description": "Production"}
+  ],
+  "security": [{"PartnerSignature": []}],
+  "tags": [
+    {"name": "白标-卡片申请 V2", "description": "推荐的卡片申请流程"},
+    {"name": "白标-卡片申请兼容查询", "description": "仍在使用的申请查询接口"},
+    {"name": "白标-卡片管理", "description": "卡片查询与状态管理"},
+    {"name": "白标-账户与授信 V2", "description": "推荐的余额与授信接口"},
+    {"name": "白标-账户与授信兼容接口", "description": "兼容现有接入的 V1 接口"},
+    {"name": "白标-交易查询", "description": "卡片交易查询"}
+  ],
+  "paths": {
+    "/openapi/application/v2/products": {
+      "get": {
+        "tags": ["白标-卡片申请 V2"],
+        "summary": "查询可申请卡产品列表",
+        "operationId": "listApplicationProducts",
+        "parameters": [{"$ref": "#/components/parameters/PageNum"}, {"$ref": "#/components/parameters/PageSize"}],
+        "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ProductPageResult"}, "example": {"code": "200", "msg": "Success", "data": {"pageNo": 1, "pageSize": 20, "totalPage": 1, "totalCount": 1, "data": [{"productCode": "CARD_PHYSICAL_HKD", "productName": "Physical Card HKD", "cardType": "PHYSICAL", "currency": "HKD"}]}}}}}}
+      }
+    },
+    "/openapi/application/v2/apply": {
+      "post": {
+        "tags": ["白标-卡片申请 V2"],
+        "summary": "申请卡片",
+        "operationId": "applyCardV2",
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/OpenApplyCardV2Param"}, "example": {"productCode": "CARD_PHYSICAL_HKD", "applicationId": "APP202608260001", "firstName": "San", "lastName": "Zhang", "email": "san.zhang@example.com", "phone": {"countryCode": "+86", "phoneNumber": "13800000001"}, "kyc": {"idType": "PASSPORT", "idNo": "P00000001", "dateOfBirth": "1990-01-01", "country": "CN", "issuanceDate": "2020-01-15", "expirationDate": "2030-01-14"}, "cardType": "PHYSICAL", "currency": "HKD", "cardholderName": "ZHANG SAN", "billingAddress": {"country": "CN", "state": "BJ", "city": "Beijing", "addressLine1": "No. 1 Example Road", "addressLine2": "Room 201", "postalCode": "100000"}, "customerNo": "CUSMOCK0001"}}}},
+        "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CardApplicationResult"}, "example": {"success": true, "code": "200", "msg": "Success", "data": {"applicationId": "APP202608260001", "uid": "U10001", "status": "PROCESSING", "cardType": "PHYSICAL", "currency": "HKD", "applyTime": "2026-08-26T09:30:00.000Z", "cardId": null, "rejectReason": null}}}}}}
+      }
+    },
+    "/openapi/application/v2/files": {
+      "post": {
+        "tags": ["白标-卡片申请 V2"],
+        "summary": "上传申请材料",
+        "operationId": "uploadApplicationFileV2",
+        "requestBody": {"required": true, "content": {"multipart/form-data": {"schema": {"type": "object", "required": ["applicationId", "fileType", "file"], "properties": {"applicationId": {"type": "string"}, "fileType": {"type": "string", "enum": ["ID_CARD_FRONT", "ID_CARD_BACK", "PASSPORT"]}, "file": {"type": "string", "format": "binary", "description": "JPEG 或 PNG 二进制文件，最大 5 MB"}}}, "example": {"applicationId": "APP202608260001", "fileType": "PASSPORT", "file": "passport.jpg (binary, image/jpeg, 284 KB)"}}}},
+        "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/FileV2Result"}, "example": {"success": true, "code": "200", "msg": "Success", "data": {"applicationId": "APP202608260001", "fileType": "PASSPORT", "version": 1}}}}}}
+      }
+    },
+    "/openapi/application/v1/status": {
+      "get": {
+        "tags": ["白标-卡片申请兼容查询"],
+        "summary": "查询申请状态",
+        "operationId": "getApplicationStatus",
+        "parameters": [{"$ref": "#/components/parameters/ApplicationId"}],
+        "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CardApplicationResult"}, "example": {"success": true, "code": "200", "msg": "Success", "data": {"applicationId": "APP202608260001", "uid": "U10001", "status": "SUCCESS", "cardType": "PHYSICAL", "currency": "HKD", "applyTime": "2026-08-26T09:30:00.000Z", "cardId": "CARD10001", "rejectReason": null}}}}}}
+      }
+    },
+    "/openapi/application/v1/list": {
+      "get": {
+        "tags": ["白标-卡片申请兼容查询"],
+        "summary": "查询申请列表",
+        "operationId": "listApplications",
+        "parameters": [{"$ref": "#/components/parameters/PageNum"}, {"$ref": "#/components/parameters/PageSize"}],
+        "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ApplicationPageResult"}, "example": {"code": "200", "msg": "Success", "data": {"pageNo": 1, "pageSize": 20, "totalPage": 1, "totalCount": 1, "data": [{"applicationId": "APP202608260001", "uid": "U10001", "status": "SUCCESS", "cardType": "PHYSICAL", "currency": "HKD", "applyTime": "2026-08-26T09:30:00.000Z", "cardId": "CARD10001", "rejectReason": null}]}}}}}}
+      }
+    },
+    "/openapi/card/v1/list": {
+      "get": {
+        "tags": ["白标-卡片管理"],
+        "summary": "查询卡片列表",
+        "operationId": "listCards",
+        "parameters": [{"name": "cardType", "in": "query", "schema": {"type": "string", "enum": ["VIRTUAL", "PHYSICAL"]}}, {"$ref": "#/components/parameters/PageNum"}, {"$ref": "#/components/parameters/PageSize"}],
+        "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CardPageResult"}, "example": {"code": "200", "msg": "Success", "data": {"pageNo": 1, "pageSize": 20, "totalPage": 1, "totalCount": 1, "data": [{"cardId": "CARD10001", "uid": "U10001", "status": "ACTIVATED", "cardType": "PHYSICAL", "currency": "HKD", "pan6": "409636", "pan4": "1234", "cardSchema": "VISA", "cardHolderName": "ZHANG SAN", "issueTime": "2026-08-26T10:00:00.000Z", "closeTime": null}]}}}}}}
+      }
+    },
+    "/openapi/card/v1/detail": {
+      "get": {
+        "tags": ["白标-卡片管理"],
+        "summary": "查询卡片详情",
+        "operationId": "getCardDetail",
+        "parameters": [{"$ref": "#/components/parameters/CardId"}],
+        "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CardResult"}, "example": {"success": true, "code": "200", "msg": "Success", "data": {"cardId": "CARD10001", "uid": "U10001", "status": "ACTIVATED", "cardType": "PHYSICAL", "currency": "HKD", "pan6": "409636", "pan4": "1234", "cardSchema": "VISA", "cardHolderName": "ZHANG SAN", "issueTime": "2026-08-26T10:00:00.000Z", "closeTime": null}}}}}}
+      }
+    },
+    "/openapi/card/v1/sensitive": {
+      "get": {
+        "tags": ["白标-卡片管理"],
+        "summary": "获取卡片敏感信息",
+        "operationId": "getCardSensitiveInfo",
+        "parameters": [{"$ref": "#/components/parameters/CardId"}],
+        "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CardSensitiveResult"}, "example": {"success": true, "code": "200", "msg": "Success", "data": {"cardId": "CARD10001", "uid": "U10001", "status": "ACTIVATED", "cardType": "PHYSICAL", "currency": "HKD", "pan6": "409636", "pan4": "1234", "cardSchema": "VISA", "cardHolderName": "ZHANG SAN", "issueTime": "2026-08-26T10:00:00.000Z", "closeTime": null, "fullPan": "4096360000001234", "cvv": "123", "expireYear": 2030, "expireMonth": 12}}}}}}
+      }
+    },
+    "/openapi/card/v1/activate": {
+      "post": {"tags": ["白标-卡片管理"], "summary": "激活卡片", "operationId": "activateCard", "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/OpenCardActivateParam"}, "example": {"uid": "U10001", "cardId": "CARD10001", "pan": "4096360000001234", "cvv": "123", "expireDate": "12/30"}}}}, "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/BooleanResult"}, "example": {"success": true, "code": "200", "msg": "Success", "data": true}}}}}}
+    },
+    "/openapi/card/v1/freeze": {
+      "post": {
+        "tags": ["白标-卡片管理"],
+        "summary": "冻结卡片",
+        "operationId": "freezeCard",
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/OpenCardReasonOperationParam"}, "example": {"uid": "U10001", "cardId": "CARD10001", "reason": "user_request"}}}},
+        "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/BooleanResult"}, "example": {"success": true, "code": "200", "msg": "Success", "data": true}}}}}
+      }
+    },
+    "/openapi/card/v1/unfreeze": {
+      "post": {"tags": ["白标-卡片管理"], "summary": "解冻卡片", "operationId": "unfreezeCard", "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/OpenCardBasicOperationParam"}, "example": {"uid": "U10001", "cardId": "CARD10001"}}}}, "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/BooleanResult"}, "example": {"success": true, "code": "200", "msg": "Success", "data": true}}}}}}
+    },
+    "/openapi/card/v1/block": {
+      "post": {"tags": ["白标-卡片管理"], "summary": "封禁卡片", "operationId": "blockCard", "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/OpenCardReasonOperationParam"}, "example": {"uid": "U10001", "cardId": "CARD10001", "reason": "compliance_review"}}}}, "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/BooleanResult"}, "example": {"success": true, "code": "200", "msg": "Success", "data": true}}}}}}
+    },
+    "/openapi/card/v1/unblock": {
+      "post": {"tags": ["白标-卡片管理"], "summary": "解除封禁", "operationId": "unblockCard", "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/OpenCardBasicOperationParam"}, "example": {"uid": "U10001", "cardId": "CARD10001"}}}}, "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/BooleanResult"}, "example": {"success": true, "code": "200", "msg": "Success", "data": true}}}}}}
+    },
+    "/openapi/card/v1/pin/set": {
+      "post": {"tags": ["白标-卡片管理"], "summary": "设置交易 PIN", "operationId": "setCardPin", "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/OpenCardPinParam"}, "example": {"uid": "U10001", "cardId": "CARD10001", "pin": "123456"}}}}, "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/BooleanResult"}, "example": {"success": true, "code": "200", "msg": "Success", "data": true}}}}}}
+    },
+    "/openapi/account/v2/partner/balance": {
+      "get": {"tags": ["白标-账户与授信 V2"], "summary": "查询商户余额", "operationId": "getPartnerBalanceV2", "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/PartnerBalanceListResult"}, "example": {"success": true, "code": "200", "msg": "Success", "data": [{"partnerId": "PARTNER10001", "availableBalance": 900, "frozenAmount": 100, "totalAmount": 1000, "currency": "HKD", "lastUpdatedAt": "2026-08-26T11:00:00.000Z"}]}}}}}}
+    },
+    "/openapi/account/v2/card/balance": {
+      "get": {"tags": ["白标-账户与授信 V2"], "summary": "查询卡余额", "operationId": "getCardBalance", "parameters": [{"$ref": "#/components/parameters/Uid"}, {"$ref": "#/components/parameters/CardId"}], "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CardBalanceResult"}, "example": {"success": true, "code": "200", "msg": "Success", "data": {"uid": "U10001", "cardId": "CARD10001", "availableBalance": 100, "frozenAmount": 0, "totalAmount": 100, "currency": "HKD", "lastUpdatedAt": "2026-08-26T11:00:00.000Z"}}}}}}}
+    },
+    "/openapi/account/v2/credit": {
+      "post": {"tags": ["白标-账户与授信 V2"], "summary": "用户授信", "operationId": "creditCardV2", "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/OpenCreditV2Param"}, "example": {"creditId": "CREDIT10001", "uid": "U10001", "cardId": "CARD10001", "amount": 100, "currency": "HKD", "remark": "initial_funding"}}}}, "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CreditV2Result"}, "example": {"success": true, "code": "200", "msg": "Success", "data": {"creditId": "CREDIT10001", "uid": "U10001", "cardId": "CARD10001", "amount": 100, "currency": "HKD", "status": "PROCESSING", "failReason": null, "createdAt": "2026-08-26T11:05:00.000Z", "completedAt": null}}}}}}}
+    },
+    "/openapi/account/v2/credit/query": {
+      "get": {"tags": ["白标-账户与授信 V2"], "summary": "查询授信结果", "operationId": "queryCreditV2", "parameters": [{"name": "creditId", "in": "query", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CreditV2Result"}, "example": {"success": true, "code": "200", "msg": "Success", "data": {"creditId": "CREDIT10001", "uid": "U10001", "cardId": "CARD10001", "amount": 100, "currency": "HKD", "status": "SUCCESS", "failReason": null, "createdAt": "2026-08-26T11:05:00.000Z", "completedAt": "2026-08-26T11:05:02.000Z"}}}}}}}
+    },
+    "/openapi/account/v1/partner/balance": {
+      "get": {"tags": ["白标-账户与授信兼容接口"], "summary": "查询商户余额（兼容）", "operationId": "getPartnerBalance", "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/PartnerBalanceResult"}, "example": {"success": true, "code": "200", "msg": "Success", "data": {"partnerId": "PARTNER10001", "availableBalance": 900, "frozenAmount": 100, "totalAmount": 1000, "currency": "HKD", "lastUpdatedAt": "2026-08-26T11:00:00.000Z"}}}}}}}
+    },
+    "/openapi/account/v1/user/balance": {
+      "get": {"tags": ["白标-账户与授信兼容接口"], "summary": "查询用户余额（兼容）", "operationId": "getUserBalance", "parameters": [{"$ref": "#/components/parameters/Uid"}], "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/UserBalanceResult"}, "example": {"success": true, "code": "200", "msg": "Success", "data": {"uid": "U10001", "availableBalance": 100, "frozenAmount": 0, "totalAmount": 100, "currency": "HKD", "lastUpdatedAt": "2026-08-26T11:00:00.000Z"}}}}}}}
+    },
+    "/openapi/account/v1/credit": {
+      "post": {"tags": ["白标-账户与授信兼容接口"], "summary": "用户授信（兼容）", "operationId": "credit", "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/OpenCreditParam"}, "example": {"creditId": "CREDIT10001", "uid": "U10001", "amount": 100, "currency": "HKD", "remark": "initial_funding"}}}}, "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CreditResult"}, "example": {"success": true, "code": "200", "msg": "Success", "data": {"creditId": "CREDIT10001", "uid": "U10001", "amount": 100, "currency": "HKD", "status": "PROCESSING", "failReason": null, "createdAt": "2026-08-26T11:05:00.000Z", "completedAt": null}}}}}}}
+    },
+    "/openapi/account/v1/credit/query": {
+      "get": {"tags": ["白标-账户与授信兼容接口"], "summary": "查询授信结果（兼容）", "operationId": "queryCredit", "parameters": [{"name": "creditId", "in": "query", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CreditResult"}, "example": {"success": true, "code": "200", "msg": "Success", "data": {"creditId": "CREDIT10001", "uid": "U10001", "amount": 100, "currency": "HKD", "status": "SUCCESS", "failReason": null, "createdAt": "2026-08-26T11:05:00.000Z", "completedAt": "2026-08-26T11:05:02.000Z"}}}}}}}
+    },
+    "/openapi/transaction/v1/list": {
+      "get": {"tags": ["白标-交易查询"], "summary": "查询交易列表", "operationId": "listTransactions", "parameters": [{"name": "startTime", "in": "query", "schema": {"type": "integer", "format": "int64", "minimum": 0}}, {"name": "endTime", "in": "query", "schema": {"type": "integer", "format": "int64", "minimum": 0}}, {"$ref": "#/components/parameters/PageNum"}, {"$ref": "#/components/parameters/PageSize"}], "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/TxnPageResult"}, "example": {"code": "200", "msg": "Success", "data": {"pageNo": 1, "pageSize": 20, "totalPage": 1, "totalCount": 1, "data": [{"orderNo": "TXN10001", "cardId": "CARD10001", "uid": "U10001", "txnType": "CLEAR", "txnBizType": "PURCHASE", "status": "SUCCESS", "basicCurrency": "HKD", "basicAmount": 25.5, "txnCurrency": "HKD", "txnAmount": 25.5, "merchantName": "Example Store", "merchantCity": "Hong Kong", "merchantCountry": "HK", "mccCode": "5411", "txnTime": "2026-08-26T12:00:00.000Z", "settleTime": "2026-08-26T12:05:00.000Z", "consumerIdLifecycle": "LIFECYCLE10001"}]}}}}}}}
+    },
+    "/openapi/transaction/v1/detail": {
+      "get": {"tags": ["白标-交易查询"], "summary": "查询交易详情", "operationId": "getTransactionDetail", "parameters": [{"name": "orderNo", "in": "query", "required": true, "schema": {"type": "string"}}], "responses": {"200": {"description": "成功", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/TxnResult"}, "example": {"success": true, "code": "200", "msg": "Success", "data": {"orderNo": "TXN10001", "cardId": "CARD10001", "uid": "U10001", "txnType": "CLEAR", "txnBizType": "PURCHASE", "status": "SUCCESS", "basicCurrency": "HKD", "basicAmount": 25.5, "txnCurrency": "HKD", "txnAmount": 25.5, "merchantName": "Example Store", "merchantCity": "Hong Kong", "merchantCountry": "HK", "mccCode": "5411", "txnTime": "2026-08-26T12:00:00.000Z", "settleTime": "2026-08-26T12:05:00.000Z", "consumerIdLifecycle": "LIFECYCLE10001"}}}}}}}
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "PartnerSignature": {"type": "apiKey", "in": "header", "name": "X-Signature", "description": "同时必须提供 X-Partner-Id、X-API-Key、X-Timestamp、X-Request-Id。"}
+    },
+    "parameters": {
+      "PageNum": {"name": "pageNum", "in": "query", "schema": {"type": "integer", "minimum": 1, "default": 1}},
+      "PageSize": {"name": "pageSize", "in": "query", "schema": {"type": "integer", "minimum": 1, "maximum": 50, "default": 20}},
+      "ApplicationId": {"name": "applicationId", "in": "query", "required": true, "schema": {"type": "string"}},
+      "CardId": {"name": "cardId", "in": "query", "required": true, "schema": {"type": "string"}},
+      "Uid": {"name": "uid", "in": "query", "required": true, "schema": {"type": "string"}}
+    },
+    "schemas": {
+      "OpenApplyCardV2Param": {"type": "object", "required": ["productCode", "applicationId", "firstName", "lastName", "email", "phone", "kyc", "cardType", "currency", "cardholderName", "billingAddress"], "properties": {"productCode": {"type": "string"}, "applicationId": {"type": "string", "maxLength": 64}, "firstName": {"type": "string"}, "lastName": {"type": "string"}, "email": {"type": "string", "format": "email"}, "phone": {"$ref": "#/components/schemas/PhoneInfo"}, "kyc": {"$ref": "#/components/schemas/KycInfo"}, "cardType": {"type": "string", "enum": ["VIRTUAL", "PHYSICAL"]}, "currency": {"type": "string"}, "cardholderName": {"type": "string"}, "billingAddress": {"$ref": "#/components/schemas/BillingAddress"}, "customerNo": {"type": "string", "maxLength": 32}}},
+      "PhoneInfo": {"type": "object", "required": ["countryCode", "phoneNumber"], "properties": {"countryCode": {"type": "string", "pattern": "^\\+\\d{1,4}$"}, "phoneNumber": {"type": "string", "pattern": "^\\d{4,20}$"}}},
+      "KycInfo": {"type": "object", "required": ["idType", "idNo", "dateOfBirth", "country", "issuanceDate", "expirationDate"], "properties": {"idType": {"type": "string", "enum": ["ID_CARD", "PASSPORT"]}, "idNo": {"type": "string"}, "dateOfBirth": {"type": "string", "format": "date"}, "country": {"type": "string", "description": "ISO 3166-1 alpha-2 或 alpha-3 国家代码"}, "issuanceDate": {"type": "string", "format": "date"}, "expirationDate": {"type": "string", "format": "date"}}},
+      "BillingAddress": {"type": "object", "required": ["country", "state", "city", "addressLine1"], "properties": {"country": {"type": "string", "description": "ISO 3166-1 alpha-2 或 alpha-3 国家代码"}, "state": {"type": "string"}, "city": {"type": "string"}, "addressLine1": {"type": "string"}, "addressLine2": {"type": "string"}, "postalCode": {"type": "string"}}},
+      "OpenCardActivateParam": {"type": "object", "required": ["uid", "cardId", "pan", "cvv", "expireDate"], "properties": {"uid": {"type": "string"}, "cardId": {"type": "string"}, "pan": {"type": "string", "pattern": "^\\d+$"}, "cvv": {"type": "string"}, "expireDate": {"type": "string", "pattern": "^(0[1-9]|1[0-2])/\\d{2}$"}}},
+      "OpenCardReasonOperationParam": {"type": "object", "required": ["uid", "cardId"], "properties": {"uid": {"type": "string"}, "cardId": {"type": "string"}, "reason": {"type": "string", "maxLength": 30}}},
+      "OpenCardBasicOperationParam": {"type": "object", "required": ["uid", "cardId"], "properties": {"uid": {"type": "string"}, "cardId": {"type": "string"}}},
+      "OpenCardPinParam": {"type": "object", "required": ["uid", "cardId", "pin"], "properties": {"uid": {"type": "string"}, "cardId": {"type": "string"}, "pin": {"type": "string", "pattern": "^\\d{6}$"}}},
+      "OpenCreditParam": {"type": "object", "required": ["creditId", "uid", "amount", "currency"], "properties": {"creditId": {"type": "string"}, "uid": {"type": "string"}, "amount": {"type": "number", "format": "double", "minimum": 0.01, "multipleOf": 0.01}, "currency": {"type": "string"}, "remark": {"type": "string", "maxLength": 30}}},
+      "OpenCreditV2Param": {"type": "object", "required": ["creditId", "uid", "cardId", "amount", "currency"], "properties": {"creditId": {"type": "string"}, "uid": {"type": "string"}, "cardId": {"type": "string"}, "amount": {"type": "number", "format": "double", "minimum": 0.01, "multipleOf": 0.01}, "currency": {"type": "string"}, "remark": {"type": "string", "maxLength": 30}}},
+      "CardApplication": {"type": "object", "properties": {"applicationId": {"type": "string"}, "uid": {"type": "string"}, "status": {"type": "string", "enum": ["SUCCESS", "FAIL", "PROCESSING", "CANCELLED", "DRAFT"]}, "cardType": {"type": "string", "enum": ["VIRTUAL", "PHYSICAL"]}, "currency": {"type": "string"}, "applyTime": {"type": "string", "format": "date-time"}, "cardId": {"type": "string", "nullable": true}, "rejectReason": {"type": "string", "nullable": true}}},
+      "Product": {"type": "object", "properties": {"productCode": {"type": "string"}, "productName": {"type": "string"}, "cardType": {"type": "string", "enum": ["VIRTUAL", "PHYSICAL"]}, "currency": {"type": "string"}}},
+      "FileV2": {"type": "object", "properties": {"applicationId": {"type": "string"}, "fileType": {"type": "string", "enum": ["ID_CARD_FRONT", "ID_CARD_BACK", "PASSPORT"]}, "version": {"type": "integer"}}},
+      "Card": {"type": "object", "properties": {"cardId": {"type": "string"}, "uid": {"type": "string"}, "status": {"type": "string", "enum": ["ISSUED", "ACTIVATED", "FROZEN", "BLOCKED", "CLOSED", "LOST", "EXPIRED", "FREEZING", "UNFREEZING", "BLOCKING", "UNBLOCKING", "TERMINATING", "REPORT_LOSS_PROCESSING", "UNKNOWN"]}, "cardType": {"type": "string", "enum": ["VIRTUAL", "PHYSICAL"]}, "currency": {"type": "string"}, "pan6": {"type": "string"}, "pan4": {"type": "string"}, "cardSchema": {"type": "string", "enum": ["VISA", "MASTERCARD", "UNIONPAY", "UNKNOWN"]}, "cardHolderName": {"type": "string"}, "issueTime": {"type": "string", "format": "date-time"}, "closeTime": {"type": "string", "format": "date-time", "nullable": true}}},
+      "CardSensitive": {"allOf": [{"$ref": "#/components/schemas/Card"}, {"type": "object", "properties": {"fullPan": {"type": "string"}, "cvv": {"type": "string"}, "expireYear": {"type": "integer"}, "expireMonth": {"type": "integer"}}}]},
+      "PartnerBalance": {"type": "object", "properties": {"partnerId": {"type": "string"}, "availableBalance": {"type": "number"}, "frozenAmount": {"type": "number"}, "totalAmount": {"type": "number"}, "currency": {"type": "string"}, "lastUpdatedAt": {"type": "string", "format": "date-time"}}},
+      "UserBalance": {"type": "object", "properties": {"uid": {"type": "string"}, "availableBalance": {"type": "number"}, "frozenAmount": {"type": "number"}, "totalAmount": {"type": "number"}, "currency": {"type": "string"}, "lastUpdatedAt": {"type": "string", "format": "date-time"}}},
+      "CardBalance": {"allOf": [{"$ref": "#/components/schemas/UserBalance"}, {"type": "object", "properties": {"cardId": {"type": "string"}}}]},
+      "Credit": {"type": "object", "properties": {"creditId": {"type": "string"}, "uid": {"type": "string"}, "amount": {"type": "number"}, "currency": {"type": "string"}, "status": {"type": "string", "enum": ["PROCESSING", "SUCCESS", "FAILED"]}, "failReason": {"type": "string", "nullable": true}, "createdAt": {"type": "string", "format": "date-time"}, "completedAt": {"type": "string", "format": "date-time", "nullable": true}}},
+      "CreditV2": {"allOf": [{"$ref": "#/components/schemas/Credit"}, {"type": "object", "properties": {"cardId": {"type": "string"}}}]},
+      "Transaction": {"type": "object", "properties": {"orderNo": {"type": "string"}, "cardId": {"type": "string"}, "uid": {"type": "string"}, "txnType": {"type": "string", "enum": ["AUTH", "AUTH_REVERSAL", "CLEAR", "CLEAR_REVERSAL", "REFUND", "REFUND_REVERSAL", "CHARGEBACK", "CHARGEBACK_REVERSAL"]}, "txnBizType": {"type": "string", "enum": ["DEFAULT", "PURCHASE", "WITHDRAW"]}, "status": {"type": "string", "enum": ["SUCCESS", "FAILED"]}, "basicCurrency": {"type": "string"}, "basicAmount": {"type": "number"}, "txnCurrency": {"type": "string"}, "txnAmount": {"type": "number"}, "merchantName": {"type": "string"}, "merchantCity": {"type": "string"}, "merchantCountry": {"type": "string"}, "mccCode": {"type": "string"}, "txnTime": {"type": "string", "format": "date-time"}, "settleTime": {"type": "string", "format": "date-time"}, "consumerIdLifecycle": {"type": "string"}}},
+      "OpenResult": {"type": "object", "properties": {"success": {"type": "boolean"}, "code": {"type": "string"}, "msg": {"type": "string"}, "data": {}}},
+      "PageResult": {"type": "object", "properties": {"code": {"type": "string"}, "msg": {"type": "string"}, "data": {"type": "object", "properties": {"pageNo": {"type": "integer"}, "pageSize": {"type": "integer"}, "totalPage": {"type": "integer"}, "totalCount": {"type": "integer"}, "data": {"type": "array", "items": {}}}}}},
+      "CardApplicationResult": {"allOf": [{"$ref": "#/components/schemas/OpenResult"}, {"type": "object", "properties": {"data": {"$ref": "#/components/schemas/CardApplication"}}}]},
+      "FileV2Result": {"allOf": [{"$ref": "#/components/schemas/OpenResult"}, {"type": "object", "properties": {"data": {"$ref": "#/components/schemas/FileV2"}}}]},
+      "BooleanResult": {"allOf": [{"$ref": "#/components/schemas/OpenResult"}, {"type": "object", "properties": {"data": {"type": "boolean"}}}]},
+      "CardResult": {"allOf": [{"$ref": "#/components/schemas/OpenResult"}, {"type": "object", "properties": {"data": {"$ref": "#/components/schemas/Card"}}}]},
+      "CardSensitiveResult": {"allOf": [{"$ref": "#/components/schemas/OpenResult"}, {"type": "object", "properties": {"data": {"$ref": "#/components/schemas/CardSensitive"}}}]},
+      "PartnerBalanceResult": {"allOf": [{"$ref": "#/components/schemas/OpenResult"}, {"type": "object", "properties": {"data": {"$ref": "#/components/schemas/PartnerBalance"}}}]},
+      "PartnerBalanceListResult": {"allOf": [{"$ref": "#/components/schemas/OpenResult"}, {"type": "object", "properties": {"data": {"type": "array", "items": {"$ref": "#/components/schemas/PartnerBalance"}}}}]},
+      "UserBalanceResult": {"allOf": [{"$ref": "#/components/schemas/OpenResult"}, {"type": "object", "properties": {"data": {"$ref": "#/components/schemas/UserBalance"}}}]},
+      "CardBalanceResult": {"allOf": [{"$ref": "#/components/schemas/OpenResult"}, {"type": "object", "properties": {"data": {"$ref": "#/components/schemas/CardBalance"}}}]},
+      "CreditResult": {"allOf": [{"$ref": "#/components/schemas/OpenResult"}, {"type": "object", "properties": {"data": {"$ref": "#/components/schemas/Credit"}}}]},
+      "CreditV2Result": {"allOf": [{"$ref": "#/components/schemas/OpenResult"}, {"type": "object", "properties": {"data": {"$ref": "#/components/schemas/CreditV2"}}}]},
+      "TxnResult": {"allOf": [{"$ref": "#/components/schemas/OpenResult"}, {"type": "object", "properties": {"data": {"$ref": "#/components/schemas/Transaction"}}}]},
+      "ProductPageResult": {"allOf": [{"$ref": "#/components/schemas/PageResult"}, {"type": "object", "properties": {"data": {"type": "object", "properties": {"data": {"type": "array", "items": {"$ref": "#/components/schemas/Product"}}}}}}]},
+      "ApplicationPageResult": {"allOf": [{"$ref": "#/components/schemas/PageResult"}, {"type": "object", "properties": {"data": {"type": "object", "properties": {"data": {"type": "array", "items": {"$ref": "#/components/schemas/CardApplication"}}}}}}]},
+      "CardPageResult": {"allOf": [{"$ref": "#/components/schemas/PageResult"}, {"type": "object", "properties": {"data": {"type": "object", "properties": {"data": {"type": "array", "items": {"$ref": "#/components/schemas/Card"}}}}}}]},
+      "TxnPageResult": {"allOf": [{"$ref": "#/components/schemas/PageResult"}, {"type": "object", "properties": {"data": {"type": "object", "properties": {"data": {"type": "array", "items": {"$ref": "#/components/schemas/Transaction"}}}}}}]}
+    }
+  }
+}

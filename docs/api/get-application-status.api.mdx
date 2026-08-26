@@ -1,0 +1,69 @@
+---
+id: get-application-status
+title: "查询申请状态"
+description: "查询申请状态"
+sidebar_label: "查询申请状态"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVltPG0cU/ivWPLWSjReQotRvliGJFRQs26S0iIexd7A3Xe9uZmYBy0KC9BIgNUENEaTQAk1T8tDUTRuFqBbtjym7hn/Rc3bXeH1BUCTkndlzm3O+75utEUlLgiRmiFM/bK09bm39edY4JrNRYlqMU6mZRlolCVJiMmlZulb0tnKSSluQKLEopxUmGccQNWLAAoxpxxKco0QzYPOhzXgVFpw9tDXOIKjkNosSUSyzCiWJGpFVC72F5JpRIktRojJR5JqFcWDfL82pP3e2Gqcflt2Dx2eNb8jSLIYUlmkIJjDKiKLgT7evu7rprO9D9qJpSGZItAhVGX8g0KwWKobq+uScd6igLLPwgBUlnplja6TmpxN2sciECNVfME2dUYP01g/Fu28fuTsNZ/OXoJ4lLEhl/Yfv9XWe1Z2/tk6bL1sHK+hVEaXrOp013rk7G147qaT9rfGt3Oe/u/XfyBKYSU3qGHXSYkaWCVuX4HxVG64RO3pFiG7UXHm6S+AQJbZ2Le/X7upxr6vwcT3Amxl2BVmSm0qlxnM52LmVTE/ATyY7iRvpe7dhkUreS41PTIyPwfNYNnkrj0TqacnJM2et3lp/7y57kyxSrua9ZJcnvZ/O5qeSXrY7n+XSKXjsj+vT923T+fGJF9fmnBnF6jVg8mGldVRHH5xANa9VBhYzZ/IKBeLgqFlMotXgkbjb78+337XPNniUhq3rtIAw80Vg0Fl6h8MZwibLaMDV/xczqO3Jd63mD87GvrN70AX2FJQaEjh4h8JyydsLVhC2SCuWzrqEwM/u89pTo4CuJBdYdJjYA3mSzGRGlJEbyk34V5RhEoCZTA0HyzZAQzjsAKiDjvD4yZ27CMfQbAnmiCk3YyM38soniVEloShDkOBz0hkZQDk71s7a3Xns85L3FyWLMZRzJmQMkvGqJVHX56guWPid0EpGR/B7lHn/1VnjJ386ASuwrSDSAgz8a+ULhucYlCtK5qlusyAnylSvbZD7whBrwNHCrVU2g5vNu8hkGRZxECSDWlo8fDnMD8dF+8ITjM+3bzub6+BSltISiXhcZfNDowsm19WSbhaoPlQ0K/EFiNVHkxw11IK56Klqd4yFhYVrxshwU7WLPlRnsSwYuCarXl0ZyqXBeA5ODlVzOPTMbNgoh5ecr7n9phe8gqx3WbV9e5cZVRlHlvlX/HSs49NH381vQQOcf74+P2y6TzdP/96NTMeCTLG0+u/yynQsmUnHILz3jKiEBlcsb5UNBoeGjzyOasac6RUWsHH0U+xQpPXiBMQBtMLdqzvrhxEIiWOG6fhlDA8NDyl9xXm7kUCF11bdvV/djVfO05eQzDn+o3XUPH/xs/Nmx9l73Xqzdto8jtwfiZx9eeKs77a+/8rdPkKftgMqgGUKWaGeIAWtGYjoriIueiwB6HFLp9BivLgQC7UAijMkgGLA3bYwwQlDQgBTLUMBaF6rFahgUxy4idv+5xbCQdUEymKHmD21XHwSkY+ywbfZx5HBt2t0cOE+53q/+gLCEQ+g85RrvjgDFqNtOHXInQRptGTIq+/rrIu0t8fzAI3/ADm/JyM=
+sidebar_class_name: "get api-method"
+info_path: docs/api/3-world-白标卡服务-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"查询申请状态"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/openapi/application/v1/status"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"applicationId","in":"query","required":true,"schema":{"type":"string"},"description":"申请单唯一标识"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  responses={{"200":{"description":"成功","content":{"application/json":{"schema":{"allOf":[{"type":"object","properties":{"success":{"type":"boolean","description":"请求是否成功"},"code":{"type":"string","description":"响应代码"},"msg":{"type":"string","description":"响应说明"},"data":{"description":"响应数据"}},"title":"OpenResult"},{"type":"object","properties":{"data":{"description":"响应数据","type":"object","properties":{"applicationId":{"type":"string","description":"申请单唯一标识"},"uid":{"type":"string","description":"用户唯一标识"},"status":{"type":"string","enum":["SUCCESS","FAIL","PROCESSING","CANCELLED","DRAFT"],"description":"当前状态"},"cardType":{"type":"string","enum":["VIRTUAL","PHYSICAL"],"description":"卡片类型"},"currency":{"type":"string","description":"币种"},"applyTime":{"type":"string","format":"date-time","description":"申请时间"},"cardId":{"type":"string","nullable":true,"description":"卡片唯一标识"},"rejectReason":{"type":"string","nullable":true,"description":"申请拒绝原因"}},"title":"CardApplication"}}}],"title":"CardApplicationResult"},"example":{"success":true,"code":"200","msg":"Success","data":{"applicationId":"APP202608260001","uid":"U10001","status":"SUCCESS","cardType":"PHYSICAL","currency":"HKD","applyTime":"2026-08-26T09:30:00.000Z","cardId":"CARD10001","rejectReason":null}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

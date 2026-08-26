@@ -1,0 +1,59 @@
+---
+id: get-partner-balance-v-2
+title: "查询商户余额"
+description: "查询商户余额"
+sidebar_label: "查询商户余额"
+hide_title: true
+hide_table_of_contents: true
+api: eJyNVl1PG0cU/SvWPNt47UhRyxtVoxalahCQFAX5Ybw7tjfdr87MYqhlCdKGGFQbKkiB4iohaUIemjqtrILq0PyYetfmX/Te8RpsTAqWJe/u3HM/z7nrEpE0L8j4POk2X4WVo/ZxLaxV2u8PSCZOXI9xKk3XmTTIOMkzOUW5dBj/hFrU0dm9NIkTzoTnOoKBjxJJaxr+GEzo3PQQCbiwshmsPwVT3XUkcyRaUM+zTF35Tj4QaFYiQi8wm6pTy7qTg5xKRC55DFy42QdMl+DC45iTNHvhhK/rTKjLyDDruhajDlgO59BtHIV/PAx3G8HmqyifMiZksAGwkNx08iPYYKsa/L3dbr3oPFtBlC3y1wV1G81wt4Ygg0o62pqeVfjkbVj9nZTBTJrSQq93POZMM+FbEsBXtaHvO7KinNMlMDIlswd78wG015spjvjKojYr7ZN6+91e+10z2G60j5fDZ4+7jVUskC5Q06JZi0XkGPDm+HaW8VFvG43O9uv2yd7p81/QQ4673zJnwnb9HkeuQK+2Oq2t08c/RmjpSmpdFxwut87j6j7nzNGXrlH/8UrnsIoYiwp514PGM2NCXgbMudymcILDYQlp2mw0ifpysFkL95vhT2/Dnb9Od5pDFBjWmuLQ/3GnnPkQ9AtTyDMuEbZIbc9iQ/KR3Gd9NSgNRyQnM5FFn7/zQ3QhUxPTs1/emk5pmpYil1HgY027ONcUPhoaFsIHp0A+v/0pGWkx5JW+mdA+SqRvzqZS45oG3zFA3iflTBk/cbKY4OwbnwmZAEd8yQMkGc9RS7DBM2HmHTzoFX1hJE9fdhvPgyeruAl7BMGOwdYSYCBUA75mmONlseJkgVo+i2Kibi/aRrHPDDEHHJzNZMGNdiwKlMoC3CRBpg71zCTVdWxVciGdjNqfzEYtjhPB+ALjvdx8bgGuIKUnxpNJgy2M3Si63DLylguAMd21k0VwOELFGeoYWXdR7ZphH8Vi8Zo+prhr+Lq6wZIEg4macknlFRFyBsqn0udQ+Xxm0GgGV39vHY2ani82z7zN1GbDeAVGDSVth9p4Opc4x4wurh9AYcH7R6cHrXBjs/3PfmwuEUVKTBr/Lq/MJSamJhPgXl3Pgl6FBKGou+loemj4UGnUdHKuSiwS3I2vsEOxzt4JLMSgehDWq8H6QQxc4qxhOr00UmOpMW0kOfU0FpxsBWvVzlolrP8W1l4GGy8gWHD0Z+ewdbr3a/BmN6i/7rxZa7eOYvfSse53J8H6fufn78OdQ8T0AahwzxXSpuqVGrXmUloPJXHWYwlsT3oWhRaDK8WFUsTHeRLxEaXeYyRWl1aEVa2Eqz4vYbgFyANRpVKWCnaXW+UyPoZecmRFBlXATdwXig7x/kTPRTYB28eT53IZ/dswJJ7Pbs3CdP4DYv5vsQ==
+sidebar_class_name: "get api-method"
+info_path: docs/api/3-world-白标卡服务-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"查询商户余额"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/openapi/account/v2/partner/balance"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+<ParamsDetails>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  responses={{"200":{"description":"成功","content":{"application/json":{"schema":{"allOf":[{"type":"object","properties":{"success":{"type":"boolean","description":"请求是否成功"},"code":{"type":"string","description":"响应代码"},"msg":{"type":"string","description":"响应说明"},"data":{"description":"响应数据"}},"title":"OpenResult"},{"type":"object","properties":{"data":{"type":"array","items":{"type":"object","properties":{"partnerId":{"type":"string","description":"合作伙伴唯一标识"},"availableBalance":{"type":"number","description":"可用余额"},"frozenAmount":{"type":"number","description":"冻结金额"},"totalAmount":{"type":"number","description":"总余额"},"currency":{"type":"string","description":"币种"},"lastUpdatedAt":{"type":"string","format":"date-time","description":"最后更新时间"}},"title":"PartnerBalance"},"description":"响应数据"}}}],"title":"PartnerBalanceListResult"},"example":{"success":true,"code":"200","msg":"Success","data":[{"partnerId":"PARTNER10001","availableBalance":900,"frozenAmount":100,"totalAmount":1000,"currency":"HKD","lastUpdatedAt":"2026-08-26T11:00:00.000Z"}]}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

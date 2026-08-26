@@ -1,0 +1,69 @@
+---
+id: list-applications
+title: "查询申请列表"
+description: "查询申请列表"
+sidebar_label: "查询申请列表"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVm1PG0cQ/itoP9v47KhR6m+WQxIriFg2pLSID4u9mEvvrXt7gGtZgr4FSJ2ghoik0AJNI/jQhLRNQ1SL9seUO5t/kZm9Mz6/JHZbJOTbu515ZmeeeXYqRNCSTZIzxK0dNNbvNrZ+bx6fkNkIMS3GqVBNI1MkSaKptkhZlqYW5DubRIhFOdWZYBzNK8SABWy0aIlNODp8Vw1YfuYwXoaFXVhgOiXJChFlC/ephmAlxuGTrhqqDhbJeIQU2Tx1NAHPVVzYBa5aiAcG7ulDd712fvBHY3+VVCMdgHn1c/YfEXW67D9/oITgE0oPvnf8AMCbL166p4+8Ry9JFXLEmW1BMpiNMAlFwZ8uq7VNd2MPMAsmwBsCd9B2HmN3bNxWCUVLNe3WvMxoELc5d4cVBCacY02E6sMVzCILnc4WXDVKpCdrD2vun1tn9ad+1ohul4Y1ah6/8h7fR6MiFeFEviMgWXmzb8LfW8l2BQeb9hQhQoQpqJYFF8OYr9TBPGyYNh2/KAMsA8iVemDclRLKOUXSqYLpmIxe9sqUgrFXe0Gqgz8LVWjoGA+WYzaSEjn//goMV6cBoQ+wDpEXhWEQlXw9cWuP3K3jszcr3v7d5vE3mEBHHcr6yFs76Ta1BRWO3c+aGdjJMyQ/lU6P5fPw5loqMw4/2dwtfJGZuA6LdGoiPTY+PnYVnq/mUtcmUe76UbSx8dpbkRQtUF6clGDvBr2dyU1OpSTajY/zmTQ89vr1RfbXuvvjPenX4ZwZhfIQPflmtXFYQxusQHlS1fsGM29ynQKhscosKnBX/5J426/Pt1+1zta/lIajaXQOeSi4w/qfpbs4nCFtcowGwvbvfAax3fuuUf/Bvb/n7ux3dEMaQg3dQuR/thlKeMt1yG1HzxG2THVLY23JlUIfKCnJO4UCs/E6bLVVSwbjYWFLKB1CFe9Un3jLeqanv0gqm00oicvKFfhXlDgJOodMxYNlqxtCpG+ztU3FMNfIjZvI/RCRCGJElSvRxOVJ5cPkJSWpKKMA8Alp8wP6Jne1hdpZZixqdbYq/yJkOcoZ3MK2iAIcL1uCgfU81WwW/marJQM/9KOBt/esefxToB1r282DI+yzZbhAbTl8YKI+ZXiSflgRskg1hwWYKJvdewPsi40YA5IBxpkFE49aYlL5qFiARQz0z6CWGgtf3IvxGM5EWADGF1tDkMM1MFgQwrKTsViRLY5eWjK5Vixp5hzVRgumHlsCTz09madGcc5clhrf6WNpaWlIH1luFp2C3xezGBYUXBVlGVeWcmEwnodzA1s4HHlmNrwpj+OHL/C9W9tXhaXeZOXWoLXAaFHelMEgNh1t2/Q03ua3IDju31+fH9S9B5tnf+2MTEcDpGim+M/K6nQ0lc1Ewb18RlYCsXVLrnJB2XDjF7KtVWPenzSC7r30EWZopPHkFJQIhMnbrbkbByPgEosM1fHDiI/GR5We4OTbkUDy19e83V+8+8/cB08BzD35rXFYP3/ys/v8sbt71Hi+flY/GbmdGGl+eepu7DS+/8rbPkSbloGcZ0xb6FSqX5CavnzuCOIixwJoHrM0qkp1k1yoBEScIQERg95tqSCcEFtS0hFqugDwuLlSmaM2m+JatYqv/bkYyVBUbVTgdlN2RXIxqnZOapH+Ifq91R77g5YiksvDQ3VPdgPRgpm/DTeLC676lwvQO9JiaFstUiDWlghZ9YziHSpwfWwS2PYWf/MLcg==
+sidebar_class_name: "get api-method"
+info_path: docs/api/3-world-白标卡服务-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"查询申请列表"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/openapi/application/v1/list"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"pageNum","in":"query","schema":{"type":"integer","minimum":1,"default":1},"description":"当前页码"},{"name":"pageSize","in":"query","schema":{"type":"integer","minimum":1,"maximum":50,"default":20},"description":"每页记录数"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  responses={{"200":{"description":"成功","content":{"application/json":{"schema":{"allOf":[{"type":"object","properties":{"code":{"type":"string","description":"响应代码"},"msg":{"type":"string","description":"响应说明"},"data":{"type":"object","properties":{"pageNo":{"type":"integer","description":"当前页码"},"pageSize":{"type":"integer","description":"每页记录数"},"totalPage":{"type":"integer","description":"总页数"},"totalCount":{"type":"integer","description":"记录总数"},"data":{"type":"array","items":{},"description":"响应数据"}},"description":"响应数据"}},"title":"PageResult"},{"type":"object","properties":{"data":{"type":"object","properties":{"data":{"type":"array","items":{"type":"object","properties":{"applicationId":{"type":"string","description":"申请单唯一标识"},"uid":{"type":"string","description":"用户唯一标识"},"status":{"type":"string","enum":["SUCCESS","FAIL","PROCESSING","CANCELLED","DRAFT"],"description":"当前状态"},"cardType":{"type":"string","enum":["VIRTUAL","PHYSICAL"],"description":"卡片类型"},"currency":{"type":"string","description":"币种"},"applyTime":{"type":"string","format":"date-time","description":"申请时间"},"cardId":{"type":"string","nullable":true,"description":"卡片唯一标识"},"rejectReason":{"type":"string","nullable":true,"description":"申请拒绝原因"}},"title":"CardApplication"},"description":"响应数据"}},"description":"响应数据"}}}],"title":"ApplicationPageResult"},"example":{"code":"200","msg":"Success","data":{"pageNo":1,"pageSize":20,"totalPage":1,"totalCount":1,"data":[{"applicationId":"APP202608260001","uid":"U10001","status":"SUCCESS","cardType":"PHYSICAL","currency":"HKD","applyTime":"2026-08-26T09:30:00.000Z","cardId":"CARD10001","rejectReason":null}]}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

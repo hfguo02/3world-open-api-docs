@@ -1,0 +1,52 @@
+---
+title: 卡片事件
+---
+
+# 卡片事件
+
+事件分类：`CARD`
+
+| 事件类型 | 说明 |
+| --- | --- |
+| `card.issued` | 卡片已发卡 |
+| `card.activated` | 卡片已激活 |
+| `card.frozen` | 卡片已冻结 |
+| `card.unfrozen` | 卡片已解冻 |
+| `card.blocked` | 卡片已封禁 |
+| `card.unblocked` | 卡片已解封 |
+| `card.terminated` | 卡片已关闭（当前能力暂不支持） |
+| `card.expired` | 卡片已过期（预留） |
+| `card.bind` | 卡绑定/验证码通知 |
+
+## 状态事件的事件数据（`data`）
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `uid` | string | 合作伙伴侧用户 UID |
+| `cardId` | string | 卡片 ID |
+| `status` | string | 卡片对外状态 |
+| `changedAt` | string | ISO-8601 时间 |
+
+## `card.bind` 事件的事件数据（`data`）
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `uid` | string | 合作伙伴侧用户 UID |
+| `cardId` | string | 卡片 ID |
+| `code` | string | 激活码或验证码 |
+| `expirationTime` | integer | 过期时间戳，毫秒 |
+
+```json
+{
+  "eventId": "019be5c92817775c9efc4967016ac4ea",
+  "eventCategory": "CARD",
+  "eventType": "card.activated",
+  "eventTime": "2026-01-24T13:00:00.000Z",
+  "data": {
+    "uid": "U10001",
+    "cardId": "CARD10001",
+    "status": "ACTIVATED",
+    "changedAt": "2026-01-24T13:00:00.000Z"
+  }
+}
+```

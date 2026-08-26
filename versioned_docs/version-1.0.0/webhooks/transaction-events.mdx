@@ -1,0 +1,58 @@
+---
+title: 交易事件
+---
+
+# 交易事件
+
+事件分类：`TRANSACTION`
+
+| 事件类型 | 说明 |
+| --- | --- |
+| `transaction.auth` | 交易授权 |
+| `transaction.auth.reversal` | 授权撤销 |
+| `transaction.clear` | 交易清算 |
+| `transaction.clear.reversal` | 清算撤销 |
+| `transaction.refund` | 交易退款 |
+| `transaction.refund.reversal` | 退款撤销 |
+| `transaction.chargeback` | 拒付（预留） |
+| `transaction.chargeback.reversal` | 拒付撤销（预留） |
+
+## 事件数据（`data`）
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `uid` | string | 合作伙伴侧用户 UID |
+| `orderNo` | string | 订单号 |
+| `txnType` | string | 交易类型 |
+| `basicAmount` / `basicCurrency` | number / string | 记账金额和币种，可为空 |
+| `txnAmount` / `txnCurrency` | number / string | 交易金额和币种 |
+| `consumerIdLifecycle` | string | 交易生命周期 ID |
+| `status` | string | `SUCCESS` / `FAILED` |
+| `cardId` | string | 卡片 ID |
+| `txnTime` | string | 交易时间，可为空 |
+| `merchantName` / `merchantCity` / `merchantCountry` | string | 商户信息，可为空 |
+
+```json
+{
+  "eventId": "019be5c92817775c9efc4967016ac4ea",
+  "eventCategory": "TRANSACTION",
+  "eventType": "transaction.auth",
+  "eventTime": "2026-01-24T13:00:00.000Z",
+  "data": {
+    "uid": "U10001",
+    "orderNo": "TXN10001",
+    "txnType": "AUTH",
+    "basicAmount": null,
+    "basicCurrency": null,
+    "txnCurrency": "HKD",
+    "txnAmount": 1.23,
+    "consumerIdLifecycle": "LIFE10001",
+    "status": "SUCCESS",
+    "cardId": "CARD10001",
+    "txnTime": "2026-01-24T13:00:00.000Z",
+    "merchantName": "Demo Store",
+    "merchantCity": "Hong Kong",
+    "merchantCountry": "HK"
+  }
+}
+```

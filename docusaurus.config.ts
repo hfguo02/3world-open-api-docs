@@ -2,19 +2,20 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type * as Preset from '@docusaurus/preset-classic';
 import type {Config} from '@docusaurus/types';
 
+import {copyPageButtonPluginOptions} from './src/config/copyPage';
+
 const config: Config = {
-  title: 'Victoria Open API Docs',
-  tagline: 'Victoria 开发者文档',
+  title: '3World 开发者文档',
+  tagline: '3World 白标卡服务 API 文档',
   favicon: 'img/favicon.ico',
 
-  url: 'http://localhost:3000',
+  url: 'https://docs.3worldglobal.com',
   baseUrl: '/',
-
-  onBrokenLinks: 'warn',
+  onBrokenLinks: 'throw',
 
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en', 'zh'],
+    defaultLocale: 'zh',
+    locales: ['zh'],
   },
 
   presets: [
@@ -22,10 +23,26 @@ const config: Config = {
       'classic',
       {
         docs: {
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
-          routeBasePath: 'guide',
+          docItemComponent: '@theme/ApiItem',
           editUrl: undefined,
           showLastUpdateTime: true,
+          lastVersion: 'current',
+          versions: {
+            current: {
+              label: 'V2',
+              path: '',
+              banner: 'none',
+              badge: false,
+            },
+            '1.0.0': {
+              label: 'V1',
+              path: 'v1',
+              banner: 'none',
+              badge: false,
+            },
+          },
         },
         blog: false,
         theme: {
@@ -39,30 +56,70 @@ const config: Config = {
     [
       'docusaurus-plugin-openapi-docs',
       {
-        id: 'api',
-        docsPluginId: 'api',
+        id: 'api-current-generator',
+        docsPluginId: 'default',
         config: {
-          passkey: {
-            specPath: 'openapi/passkey/passkey-api-openapi.json',
-            outputDir: 'api-docs/passkey',
-            label: 'v1.2.0',
-            version: '1.2.0',
-            sidebarOptions: {
-              groupPathsBy: 'tag',
-            },
+          whitelabel: {
+            specPath: 'openapi/whitelabel/releases/whitelabel-api-v1.1.0.json',
+            outputDir: 'docs/api',
+            infoTemplate: 'templates/api-info.mdx.mustache',
+            label: 'V2',
+            version: '1.1.0',
+            hideSendButton: true,
+            maskCredentials: true,
           },
         },
       },
     ],
     [
-      '@docusaurus/plugin-content-docs',
+      'docusaurus-plugin-openapi-docs',
       {
-        id: 'api',
-        path: 'api-docs',
-        routeBasePath: 'api',
-        sidebarPath: './api-docs/passkey/sidebar.ts',
-        docItemComponent: '@theme/ApiItem',
-        editUrl: undefined,
+        id: 'api-v1-generator',
+        docsPluginId: 'default',
+        config: {
+          whitelabelV1: {
+            specPath: 'openapi/whitelabel/releases/whitelabel-api-v1.0.0.json',
+            outputDir: 'versioned_docs/version-1.0.0/api',
+            infoTemplate: 'templates/api-info.mdx.mustache',
+            label: 'V1',
+            version: '1.0.0',
+            hideSendButton: true,
+            maskCredentials: true,
+          },
+        },
+      },
+    ],
+    [
+      'docusaurus-plugin-copy-page-button',
+      copyPageButtonPluginOptions,
+    ],
+    [
+      'docusaurus-plugin-llms',
+      {
+        versions: 'auto',
+        generateLLMsTxt: true,
+        generateLLMsFullTxt: false,
+        generateMarkdownFiles: true,
+        excludeImports: true,
+        removeDuplicateHeadings: true,
+        ignoreFiles: ['**/*.info.mdx'],
+        logLevel: 'quiet',
+      },
+    ],
+    [
+      '@easyops-cn/docusaurus-search-local',
+      {
+        hashed: true,
+        language: ['zh', 'en'],
+        indexDocs: true,
+        indexBlog: false,
+        indexPages: false,
+        docsRouteBasePath: '/',
+        docsDir: ['docs', 'versioned_docs/version-1.0.0'],
+        docsPluginIdForPreferredVersion: 'default',
+        searchBarShortcut: false,
+        searchBarShortcutKeymap: 'mod+k',
+        searchBarShortcutHint: false,
       },
     ],
   ],
@@ -73,51 +130,20 @@ const config: Config = {
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
       defaultMode: 'dark',
-      respectPrefersColorScheme: true,
+      respectPrefersColorScheme: false,
     },
     docs: {
       sidebar: {
         hideable: true,
-        autoCollapseCategories: true,
+        autoCollapseCategories: false,
       },
     },
     navbar: {
-      title: 'Victoria Open API Docs',
       logo: {
-        alt: 'Victoria',
+        alt: '3World',
         src: 'img/logo.svg',
       },
-      items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'guideSidebar',
-          position: 'left',
-          label: 'Guide',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'apiSidebar',
-          position: 'left',
-          label: 'API Reference',
-        },
-        {
-          type: 'localeDropdown',
-          position: 'right',
-        },
-      ],
-    },
-    footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Docs',
-          items: [
-            {label: 'Guide', to: '/guide/overview'},
-            {label: 'API Reference', to: '/api/passkey/overview'},
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} Victoria. Built with Docusaurus.`,
+      items: [],
     },
     prism: {
       theme: prismThemes.github,

@@ -1,0 +1,42 @@
+---
+title: 授信事件
+---
+
+# 授信事件
+
+事件分类：`CREDIT`
+
+| 事件类型 | 说明 |
+| --- | --- |
+| `credit.adjustment.accepted` | 授信请求已接受 |
+| `credit.adjustment.success` | 授信调整成功 |
+| `credit.adjustment.failed` | 授信调整失败 |
+
+## 事件数据（`data`）
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `uid` | string | 合作伙伴侧用户 UID |
+| `orderNo` | string | 授信单号 |
+| `outOrderNo` | string | 合作伙伴外部业务单号 |
+| `amount` | number | 授信金额 |
+| `currency` | string | 币种 |
+| `changedAt` | string | ISO-8601 时间 |
+| `errorCode` | string | 失败事件的错误码，可为空 |
+
+```json
+{
+  "eventId": "019be5c92817775c9efc4967016ac4ea",
+  "eventCategory": "CREDIT",
+  "eventType": "credit.adjustment.success",
+  "eventTime": "2026-01-24T13:00:00.000Z",
+  "data": {
+    "uid": "U10001",
+    "orderNo": "CREDIT10001",
+    "outOrderNo": "ORDER10001",
+    "amount": 100,
+    "currency": "HKD",
+    "changedAt": "2026-01-24T13:00:00.000Z"
+  }
+}
+```

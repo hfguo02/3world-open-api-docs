@@ -1,0 +1,43 @@
+---
+slug: /webhooks
+title: Webhook 事件
+description: 接收 3World 业务状态变化通知。
+---
+
+# Webhook 事件
+
+3World 会向合作伙伴配置的 Webhook URL 发送申请、卡片、交易和授信事件。
+
+## 请求头
+
+| Header | 说明 |
+| --- | --- |
+| `Content-Type` | `application/json` |
+| `X-Webhook-Id` | 事件 ID，与 Payload 的 `eventId` 相同 |
+| `X-Webhook-Timestamp` | 当前发送尝试的 Unix 时间戳，毫秒 |
+| `X-Partner-Id` | 合作伙伴 ID |
+
+当前 Webhook 不发送签名请求头。接收方应使用 `eventId` 做幂等处理，并通过 HTTPS、来源 IP 控制和事件数据校验保护接收端点。
+
+## 请求体（Payload）
+
+```json
+{
+  "eventId": "019be5c92817775c9efc4967016ac4ea",
+  "eventCategory": "CARD",
+  "eventType": "card.issued",
+  "eventTime": "2026-01-24T13:00:00.000Z",
+  "data": {}
+}
+```
+
+请求体固定使用 `Payload` 这一层；其中 `data` 是由具体事件类型决定的事件数据。事件字段的维护规则见各事件页面。
+
+## 重试
+
+- 连接和读取超时：2 秒。
+- 任意 HTTP `2xx` 响应视为成功。
+- 失败后最多重试 6 次，间隔为 1 分钟、5 分钟、30 分钟、2 小时、6 小时、24 小时。
+- 重试沿用相同的 `eventId` 和请求体，每次发送会更新 `X-Webhook-Timestamp`。
+
+接收方应尽快返回 `2xx`，将耗时业务异步化。

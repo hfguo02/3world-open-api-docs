@@ -1,0 +1,37 @@
+---
+title: 通用响应
+---
+
+# 通用响应
+
+普通接口返回：
+
+```json
+{
+  "success": true,
+  "code": "200",
+  "msg": "Success",
+  "data": {}
+}
+```
+
+| 字段 | 类型 | 说明 |
+| --- | --- | --- |
+| `success` | boolean | 普通接口成功标识 |
+| `code` | string | 响应码，成功为 `200` |
+| `msg` | string | 响应描述 |
+| `data` | object / array / boolean / null | 业务数据 |
+
+分页接口使用相同的 `code`、`msg`、`data` 结构，`data` 为：
+
+```json
+{
+  "pageNo": 1,
+  "pageSize": 20,
+  "totalPage": 1,
+  "totalCount": 1,
+  "data": []
+}
+```
+
+分页响应类型不额外返回 `success` 字段。认证失败、参数错误、限流等情况仍返回 `code` 和 `msg`，具体错误码见[错误码](../reference/error-codes)。

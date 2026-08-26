@@ -1,0 +1,68 @@
+---
+id: unblock-card
+title: "解除封禁"
+description: "解除封禁"
+sidebar_label: "解除封禁"
+hide_title: true
+hide_table_of_contents: true
+api: eJyVVVtP20gU/itonhMc2re8AdsHtA8gQrVIiIeJPSRubY87MyagKFKpBIWqgUhld6laqUX09lA1tFptV9tl+2M2dui/2HPGE+fi1UJ5CJ7xd27f+c5xkyhak6S8RuL2af/gYf/Dab+zR9YLhIdMUOXyYMEhZRIFVY/bd+epcEiBCHYvYlLNcWeblJv66AoGOCUiViA2DxQLFL6iYei5tvZj3ZE8wDtp15lP8Ulthwyc8+odZivjN3W0RiIXI9kQEBKAfEKBGSmXSbTEt0MHUgk3qAHcYdIWbojh4Lp//C7Z/xwfd3t/3E9ePrzs7pFW5vJK65SQcWswV67y0GoxZAHSMUelay8OyFqigvoYhW1RP0SgyZXcnimVSjPDkspkfnb5h/Sy1ULPgsmQBzIt8EaphP/GU0r2O/GjF+Q7GKaet7gBdOa5HudTRrbNpBxhpcq5x2iQo+Wy+zn5+CA56cadNyYfJJU77BqUPmnHfx73vpz1X+6glS9r1zW67P6WnByikUMVzVOTopKfz5P2h1yflpmMPAXGV9Ew8H0FBxPBWuvDcHOpSRZxVAgZyYMxQc50pw0VpGIQgyoR2ErVsVU0U1dkgS22Q4VjskE9yUbfSbcWDAdxonNvz749fRWf7/Tf7BBMDCQk4ZXU+rjLYJb/M0qBbFIvYiYakjiJNVEzoE4bSPGZqnOUesilJpuqOpwsoDygoWvhKFibM5bZLoCQTGwykWYUCQ/AdaVCWbYsh21O32xw4Tk1j1epN21z32qAl1x3KjRwqnxLt3vcR6PRuKaPJcGdyNYHLEQyOxKu2tZ5wYyrgIkKFE1VJKDetfVRUAWnL9VTHpppC6L+CDQWiIvx6ow6TMApoD6+XS0ObXLq6zxOfv09/rr77fRLctTp/f1sarVoIhUXnH/u76wWZ5cWiuBeP6+4kI0CFerTsukZAh/oScGtsTzc6LcmN1c2l9nmMjctTH6D66KM/G/+hOxO9Z9ewMqEDZo8b8ePTqcgHVQHdDYtYWa6NF3KFaZvp+LDvfjoU/9gP3n+Pjl8HR+dQaLJL+f4vPsa1k/vr5N4d7938RX2e3zxJD5op2BdT0Frzad6DxoyJ4Q/FjTrh4J5sEKPQjvAidZN0wh2jRjBGg6wFNzkA9lC7+socAA2m1Uq2W3htVp4DaQKFM06joZwadVL1VIYNHw4efPpSi+uYDrZJOXX+3D+ZmFXhOp/saMzuLRYWQFw1Xy0/XT7CNrADy/8lgnBr75KN0IzvWsSjwa1iNYQm/rEv38Bq+4kJg==
+sidebar_class_name: "post api-method"
+info_path: versioned_docs/version-1.0.0/api/3-world-白标卡服务-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"解除封禁"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/openapi/card/v1/unblock"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","required":["uid","cardId"],"properties":{"uid":{"type":"string","description":"用户唯一标识"},"cardId":{"type":"string","description":"卡片唯一标识"}},"title":"OpenCardBasicOperationParam"},"example":{"uid":"U10001","cardId":"CARD10001"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  responses={{"200":{"description":"成功","content":{"application/json":{"schema":{"allOf":[{"type":"object","properties":{"success":{"type":"boolean","description":"请求是否成功"},"code":{"type":"string","description":"响应代码"},"msg":{"type":"string","description":"响应说明"},"data":{"description":"响应数据"}},"title":"OpenResult"},{"type":"object","properties":{"data":{"type":"boolean","description":"响应数据"}}}],"title":"BooleanResult"},"example":{"success":true,"code":"200","msg":"Success","data":true}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

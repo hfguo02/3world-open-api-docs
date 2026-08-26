@@ -1,0 +1,69 @@
+---
+id: get-user-balance
+title: "查询用户余额"
+description: "查询用户余额"
+sidebar_label: "查询用户余额"
+hide_title: true
+hide_table_of_contents: true
+api: eJyNVttu20YQ/RVhn1pA1MUBgkJvDlq0Rh5i+NIaNfywIlcSU4pkdpeSVUGAnbaJbUSyCru1XbtInDRxHpoqLYzaqODmYypS0l90hqTuAixAALXcOTOzM+fMskwkzQqSWiedyzfezlXruubVdlofzslGlFg241TqlrmgkRTJMrkqGL9HDWqqjESJTTnNM8k44svEhAWYOboGe7oJfx85jJdgwdkjR+cMnEjusCgRao7lKUmViSzZiBGS62aWVKJEY0Lluo1B4X378C3k5B42Wtdb3ounncYTUtlAf8K2TMEEuphLJPAxCvR26u7ecwitWqZkpkQLatuGrvrniT8UaFYeyoQaxoOMf44wJyv9kKkSj8mxDlIPwglHVZkQQ8mnLctg1CTjyXcaV96fj73jhlt/E+ZTwYQ0Nnnycax7UHX/OWw1X7VfbCMqL7KzgjqNS++45teSSjpZmsDK++m9V/2DVMBM6tJArw9sZi4x4RgSwLeVYQbf0VtcIFFuPdM0BkQJLVDdoGmD9cg48GM6+TTjk7XZb4Cr1s1J9+Wv6CHDrW+ZOZ+3nIAct6CfNNvNg+7TH0O0tCQ1ZgV7W81BXNXhnJlqaYZuXm+3L6qIMaiQqzZUnGnzchowY/E8hR3sClOknmeTSZxtufWad3rp/fzeO/q7e3Q50vthYVcqqLEpO31yELZJ87bBRvQQSDugty/KkLVkObQYENLvPFlNJhKJJJnWTdgZb1FirOq+yaCa5Iv7n5KJUkEec3eVxCfK3N2VZDKVSMAvBlG/xkNWsACbCg4nJqQCfnjJljilMtQQbHhP6FlzML7GKvv8dafxMuBp2GcsEEwdAQbBaPyGYYrTYkVJgRoOC2Oi7sZtw9h9Q8wBGwSTN2eFc9kfxjIHizgozKS2HqeqioWKF5JxB1oYT/fHNqwKvZntcANAOSltkYrHNVaI3Sla3NCyhgWAmGrl40XwNkGnZWpqaWvTHxSjPorF4ow+FrmlOaq/wPMIBt3UZcnPa5FyaTK+DGen0uFw7PWNYaNlnNvBGJk07QsEot5npd5tlGNU8+UZXlRrygAzIb76M1CJ++GH7nnT26+3/j2NrClhJGVB+29re02ZX1xQwL3/fwU0JySIwl8tha1Dw8e+znQzY/mJhaq68xVWKNI+uYGh5lbPvbOqu3ceAZfYaOhOkEYylowlJpLz30bcmwN3t9re3fHOfvdqr939VxDMvfqrfdHsnvzmvjt2z9623+22mleRL+cine9u3L3T9i/fe0cXiOkBUM22JWSe+vdhWJqpnB5Jol9jCVSP2waFEoMrnwvlkIzrJCQjajygI54OJY+UhEePlNDZHCSBkHI5TQVb5Ualgq+DTwikhKYLnBEDeY7l07/pyUdL4ffGx5Ep10d0euaB7IKPl1BpxOdlgXIdA/sUjPZYNFD1PEw3Ww6hJr4zRtT6+WcrwIj/AaKVsKM=
+sidebar_class_name: "get api-method"
+info_path: docs/api/3-world-白标卡服务-api
+custom_edit_url: null
+hide_send_button: true
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"查询用户余额"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/openapi/account/v1/user/balance"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"uid","in":"query","required":true,"schema":{"type":"string"},"description":"用户唯一标识"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  responses={{"200":{"description":"成功","content":{"application/json":{"schema":{"allOf":[{"type":"object","properties":{"success":{"type":"boolean","description":"请求是否成功"},"code":{"type":"string","description":"响应代码"},"msg":{"type":"string","description":"响应说明"},"data":{"description":"响应数据"}},"title":"OpenResult"},{"type":"object","properties":{"data":{"description":"响应数据","type":"object","properties":{"uid":{"type":"string","description":"用户唯一标识"},"availableBalance":{"type":"number","description":"可用余额"},"frozenAmount":{"type":"number","description":"冻结金额"},"totalAmount":{"type":"number","description":"总余额"},"currency":{"type":"string","description":"币种"},"lastUpdatedAt":{"type":"string","format":"date-time","description":"最后更新时间"}},"title":"UserBalance"}}}],"title":"UserBalanceResult"},"example":{"success":true,"code":"200","msg":"Success","data":{"uid":"U10001","availableBalance":100,"frozenAmount":0,"totalAmount":100,"currency":"HKD","lastUpdatedAt":"2026-08-26T11:00:00.000Z"}}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
