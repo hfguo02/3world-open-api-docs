@@ -27,7 +27,6 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           docItemComponent: '@theme/ApiItem',
           editUrl: undefined,
-          showLastUpdateTime: true,
           lastVersion: 'current',
           versions: {
             current: {
