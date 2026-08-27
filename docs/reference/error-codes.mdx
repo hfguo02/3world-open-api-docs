@@ -4,28 +4,98 @@ sidebar_position: 2
 
 # 错误码
 
+以下为白标 OpenAPI 实际可能返回的错误码。请求失败时响应体包含 `code` 与 `msg`，其中 `code` 为业务响应码，成功为 `200`。
+
 ## 通用错误
+
+所有接口均可能返回：
 
 | code | 含义 |
 | --- | --- |
 | `200` | Success |
 | `600001001` | Parameter error |
-| `600001002` | API Key invalid |
 | `600001003` | Signature verification failed |
 | `600001004` | Timestamp expired |
-| `600001005` | Forbidden access |
 | `600001006` | IP not in whitelist |
 | `600001008` | Request rate limit exceeded |
 | `600001009` | Internal server error |
 | `600001010` | Missing required header |
+| `600001011` | Partner ID format invalid |
+| `600001012` | Invalid API Key format |
 | `600001013` | API Key does not match Partner ID |
 | `600001014` | Replay request detected |
+| `600001015` | System error, please try again later |
+| `600001016` | Partner does not exist |
+| `600001017` | Partner is disabled or deleted |
 
-## 业务域编号
+## 卡片申请（600002xxx）
 
-| 编号段 | 业务域 |
+| code | 含义 |
 | --- | --- |
-| `600002xxx` | 用户、申请和申请材料 |
-| `600003xxx` | 卡片操作、敏感信息和 PIN |
-| `600004xxx` | 账户与授信 |
-| `600005xxx` | 交易查询 |
+| `600002001` | User does not exist |
+| `600002004` | Billing address format error |
+| `600002006` | Card inventory is insufficient |
+| `600002010` | Application does not exist |
+| `600002012` | A card application is already in progress for this user |
+| `600002013` | User already owns a card |
+| `600002014` | Customer No does not exist |
+| `600002015` | Customer No is invalid or occupied |
+| `600002016` | Customer No is occupied by another application |
+| `600002017` | File type is invalid |
+| `600002018` | File is empty |
+| `600002019` | File size exceeds limit |
+| `600002020` | File content type is invalid |
+| `600002021` | File extension is invalid |
+| `600002022` | File header is invalid |
+| `600002023` | File upload failed |
+| `600002027` | Application status does not allow file upload |
+| `600002028` | Passport nationality is restricted |
+| `600002029` | ID card issuing country is restricted |
+| `600002030` | Phone country code is restricted |
+| `600002031` | Billing address cannot be mapped to provider region |
+
+## 卡片管理（600003xxx）
+
+| code | 含义 |
+| --- | --- |
+| `600003002` | Activation code error |
+| `600003004` | Card does not exist |
+| `600003005` | No permission to access this card |
+| `600003006` | Card status does not allow freeze |
+| `600003007` | Card status does not allow unfreeze |
+| `600003008` | Card status does not allow block |
+| `600003009` | Card status does not allow unblock |
+| `600003019` | Provider service temporarily unavailable |
+| `600003020` | PIN operation failed |
+| `600003021` | PIN must be exactly 6 digits |
+
+## 账户与授信（600004xxx）
+
+| code | 含义 |
+| --- | --- |
+| `600004001` | Partner account does not exist |
+| `600004002` | User account does not exist |
+| `600004004` | User does not exist for credit operation |
+| `600004005` | Partner balance insufficient |
+| `600004006` | Credit amount invalid (must be greater than 0) |
+| `600004007` | Currency mismatch |
+| `600004009` | Credit record does not exist |
+| `600004011` | Provider rejected the credit adjustment request |
+| `600004012` | Provider response is abnormal, please retry later |
+| `600004013` | Provider has not returned for a long time, polling stopped |
+| `600004014` | Account callback failed, please retry later |
+| `600004015` | Please use a higher version to query, or consult the administrator. |
+| `600004016` | The current card currency and credit currency are not supported |
+
+## 交易查询（600005xxx）
+
+| code | 含义 |
+| --- | --- |
+| `600005003` | Transaction does not exist |
+| `600005004` | No permission to access this transaction |
+
+## 说明
+
+- 鉴权、签名和参数校验类错误（`600001xxx`）返回 HTTP `401`；限流 `600001008` 返回 HTTP `429`。
+- 拦截器兜底异常返回 `600001000`（系统错误），该码未收录于错误码枚举。
+- 个别异常路径可能直接返回内部错误码（如 `500000002`、`500007003`），以接口实际返回为准。
