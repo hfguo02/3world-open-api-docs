@@ -1,4 +1,4 @@
-import {mkdir, readFile, rm, writeFile} from 'node:fs/promises';
+import {mkdir, readFile, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
@@ -7,10 +7,6 @@ const RELEASES = [
   {
     spec: 'openapi/whitelabel/releases/whitelabel-api-v1.1.0.json',
     routePrefix: '/api',
-  },
-  {
-    spec: 'openapi/whitelabel/releases/whitelabel-api-v1.0.0.json',
-    routePrefix: '/v1/api',
   },
 ];
 
@@ -224,4 +220,3 @@ const outDir = path.resolve(siteDir, process.argv[2] ?? 'build');
 await Promise.all(
   RELEASES.map((release) => writeReleaseMarkdown(release, {siteDir, outDir})),
 );
-await rm(path.join(outDir, 'v1', 'v1'), {recursive: true, force: true});

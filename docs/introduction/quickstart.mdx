@@ -5,16 +5,9 @@ description: 完成第一个 3World API 请求。
 
 # 快速开始
 
-## 环境
-
-| 环境 | Base URL |
-| --- | --- |
-| Sandbox | `https://label.3worldglobal.com/wapi` |
-| Production | 由 3World 提供 |
-
 ## 接入前提
 
-向 3World 获取 `Partner ID`、`API Key` 和 `API Secret`，并将 `API Secret` 仅存储在服务端。每个 API 请求均须使用这三项凭证完成鉴权签名。
+先完成[环境与地址](/introduction)和[鉴权签名](/introduction/authentication-signature)中的准备工作。
 
 ## 第一个请求
 
@@ -35,9 +28,9 @@ curl --request GET \
 ## 接入流程
 
 1. 调用产品列表接口，保存可用的 `productCode`。
-2. 调用 V2 申请接口创建申请单。
+2. 调用申请接口创建申请单。
 3. 按 KYC 证件类型上传申请资料。
 4. 通过申请查询接口或 Webhook 获取申请状态。
 5. 通过卡片接口查询卡片、激活、冻结或解冻。
 
-完成首个请求后，继续查阅[通用响应](./common-responses)和 [API 文档](../api)。
+完成首个请求后，继续查阅[请求与响应规范](/introduction/common-responses)和 [API 文档](/api)。

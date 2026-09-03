@@ -4,10 +4,7 @@ import {fileURLToPath} from 'node:url';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const siteDir = path.resolve(scriptDir, '..');
-const generatedDirs = [
-  path.join(siteDir, 'docs/api'),
-  path.join(siteDir, 'versioned_docs/version-1.0.0/api'),
-];
+const generatedDirs = [path.join(siteDir, 'docs/api')];
 
 for (const generatedDir of generatedDirs) {
   if (path.basename(generatedDir) !== 'api') {

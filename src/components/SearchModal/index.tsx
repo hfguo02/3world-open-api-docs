@@ -69,7 +69,7 @@ export default function SearchModal(): React.JSX.Element {
             className="docs-search-modal__panel"
             role="dialog"
             aria-modal="true"
-            aria-label="搜索当前版本文档">
+            aria-label="搜索文档">
             <div className="docs-search-modal__search">
               <SearchBar />
               <button

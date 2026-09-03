@@ -10,11 +10,6 @@ const sourcePath = path.join(
 );
 const outputDir = path.join(siteDir, 'openapi/whitelabel/releases');
 const currentSidebarPath = path.join(siteDir, 'sidebars.ts');
-const versionedSidebarDir = path.join(siteDir, 'versioned_sidebars');
-const v1SidebarPath = path.join(
-  versionedSidebarDir,
-  'version-1.0.0-sidebars.json',
-);
 
 const CURRENT_REPLACED_PATHS = new Set([
   '/openapi/account/v1/partner/balance',
@@ -23,13 +18,9 @@ const CURRENT_REPLACED_PATHS = new Set([
 ]);
 
 const RELEASES = {
-  '1.0.0': {
-    includePath: (apiPath) => apiPath.includes('/v1/'),
-    description: '1.0.0 仅用于维护现有 V1 集成；新接入请使用 V2。',
-  },
   '1.1.0': {
     includePath: (apiPath) => !CURRENT_REPLACED_PATHS.has(apiPath),
-    description: '1.1.0 是新接入的默认版本，包含 V2 接口及尚未被替代的 V1 接口。',
+    description: '供白标商户对接 Card 业务的 API。',
   },
 };
 
@@ -321,35 +312,42 @@ function buildSidebar(spec) {
     docsSidebar: [
       {
         type: 'category',
-        label: '接入指南',
+        label: '开发者指南',
         link: {type: 'doc', id: 'introduction/index'},
         items: [
-          'introduction/quickstart',
           'introduction/authentication-signature',
           'introduction/common-responses',
         ],
       },
       {
         type: 'category',
-        label: 'API 文档',
-        link: {type: 'doc', id: 'api/api-overview'},
-        items: buildApiCategories(spec),
-      },
-      {
-        type: 'category',
-        label: 'Webhook 事件',
-        link: {type: 'doc', id: 'webhooks/index'},
+        label: 'Card',
         items: [
-          'webhooks/application-events',
-          'webhooks/card-events',
-          'webhooks/transaction-events',
-          'webhooks/credit-events',
+          'introduction/quickstart',
+          {
+            type: 'category',
+            label: 'API 文档',
+            link: {type: 'doc', id: 'api/api-overview'},
+            items: buildApiCategories(spec),
+          },
+          {
+            type: 'category',
+            label: 'Webhook 事件',
+            link: {type: 'doc', id: 'webhooks/index'},
+            items: [
+              'webhooks/application-events',
+              'webhooks/card-events',
+              'webhooks/transaction-events',
+              'webhooks/credit-events',
+            ],
+          },
+          'reference/error-codes',
         ],
       },
       {
-        type: 'category',
-        label: '参考资料',
-        items: ['reference/error-codes'],
+        type: 'doc',
+        id: 'funds/index',
+        label: 'Funds',
       },
     ],
   };
@@ -366,7 +364,6 @@ export default sidebars;
 
 const source = JSON.parse(await readFile(sourcePath, 'utf8'));
 await mkdir(outputDir, {recursive: true});
-await mkdir(versionedSidebarDir, {recursive: true});
 
 const generatedReleases = new Map();
 for (const [version, release] of Object.entries(RELEASES)) {
@@ -378,6 +375,4 @@ for (const [version, release] of Object.entries(RELEASES)) {
 }
 
 const currentSidebar = buildSidebar(generatedReleases.get('1.1.0'));
-const v1Sidebar = buildSidebar(generatedReleases.get('1.0.0'));
 await writeFile(currentSidebarPath, sidebarModule(currentSidebar), 'utf8');
-await writeFile(v1SidebarPath, `${JSON.stringify(v1Sidebar, null, 2)}\n`, 'utf8');

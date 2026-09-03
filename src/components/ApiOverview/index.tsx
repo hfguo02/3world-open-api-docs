@@ -2,12 +2,7 @@ import React from 'react';
 import Link from '@docusaurus/Link';
 
 import currentSpec from '@site/openapi/whitelabel/releases/whitelabel-api-v1.1.0.json';
-import legacySpec from '@site/openapi/whitelabel/releases/whitelabel-api-v1.0.0.json';
-import {
-  apiBasePath,
-  operationSlug,
-  type ApiRelease,
-} from '@site/src/lib/apiPaths';
+import {operationSlug} from '@site/src/lib/apiPaths';
 
 type Operation = {
   operationId: string;
@@ -15,26 +10,21 @@ type Operation = {
   tags?: string[];
 };
 
-type Spec = typeof currentSpec | typeof legacySpec;
-
-const SPECS: Record<ApiRelease, Spec> = {
-  '1.1.0': currentSpec,
-  '1.0.0': legacySpec,
-};
+type Spec = typeof currentSpec;
 
 const HTTP_METHODS = ['get', 'post', 'put', 'patch', 'delete'] as const;
 
 function operationsForTag(spec: Spec, tagName: string) {
   return Object.values(spec.paths).flatMap((pathItem) =>
     HTTP_METHODS.flatMap((method) => {
-      const operation = pathItem[method] as Operation | undefined;
+      const operation = (pathItem as Record<string, Operation | undefined>)[method];
       return operation?.tags?.includes(tagName) ? [operation] : [];
     }),
   );
 }
 
-export default function ApiOverview({version}: {version: ApiRelease}) {
-  const spec = SPECS[version];
+export default function ApiOverview() {
+  const spec = currentSpec;
   const modules = spec.tags.map((tag) => ({
     ...tag,
     operations: operationsForTag(spec, tag.name),
@@ -48,7 +38,7 @@ export default function ApiOverview({version}: {version: ApiRelease}) {
     <div className="api-overview">
       <header className="api-overview__header">
         <p className="api-overview__eyebrow">
-          3World Open API · V{version === '1.1.0' ? '2' : '1'}
+          3World Open API
         </p>
         <h1>API 文档</h1>
         <p>
@@ -64,7 +54,7 @@ export default function ApiOverview({version}: {version: ApiRelease}) {
             <Link
               className="api-module-card"
               key={name}
-              to={`${apiBasePath(version)}/${operationSlug(firstOperation.operationId)}`}>
+              to={`/api/${operationSlug(firstOperation.operationId)}`}>
               <div>
                 <h2>{name}</h2>
                 <p>{description}</p>

@@ -6,7 +6,7 @@ import {copyPageButtonPluginOptions} from './src/config/copyPage';
 
 const config: Config = {
   title: '3World 开发者文档',
-  tagline: '3World 白标卡服务 API 文档',
+  tagline: '3World Open API 开发者文档',
   favicon: 'img/favicon.ico',
 
   url: 'https://hfguo02.github.io',
@@ -27,21 +27,6 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           docItemComponent: '@theme/ApiItem',
           editUrl: undefined,
-          lastVersion: 'current',
-          versions: {
-            current: {
-              label: 'V2',
-              path: '',
-              banner: 'none',
-              badge: false,
-            },
-            '1.0.0': {
-              label: 'V1',
-              path: 'v1',
-              banner: 'none',
-              badge: false,
-            },
-          },
         },
         blog: false,
         theme: {
@@ -62,26 +47,7 @@ const config: Config = {
             specPath: 'openapi/whitelabel/releases/whitelabel-api-v1.1.0.json',
             outputDir: 'docs/api',
             infoTemplate: 'templates/api-info.mdx.mustache',
-            label: 'V2',
             version: '1.1.0',
-            hideSendButton: true,
-            maskCredentials: true,
-          },
-        },
-      },
-    ],
-    [
-      'docusaurus-plugin-openapi-docs',
-      {
-        id: 'api-v1-generator',
-        docsPluginId: 'default',
-        config: {
-          whitelabelV1: {
-            specPath: 'openapi/whitelabel/releases/whitelabel-api-v1.0.0.json',
-            outputDir: 'versioned_docs/version-1.0.0/api',
-            infoTemplate: 'templates/api-info.mdx.mustache',
-            label: 'V1',
-            version: '1.0.0',
             hideSendButton: true,
             maskCredentials: true,
           },
@@ -114,8 +80,7 @@ const config: Config = {
         indexBlog: false,
         indexPages: false,
         docsRouteBasePath: '/',
-        docsDir: ['docs', 'versioned_docs/version-1.0.0'],
-        docsPluginIdForPreferredVersion: 'default',
+        docsDir: ['docs'],
         searchBarShortcut: false,
         searchBarShortcutKeymap: 'mod+k',
         searchBarShortcutHint: false,

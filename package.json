@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build:api-releases": "node scripts/build-openapi-releases.mjs",
-    "generate:api-docs": "npm run build:api-releases && node scripts/prepare-api-docs.mjs && docusaurus gen-api-docs whitelabel --plugin-id api-current-generator && docusaurus gen-api-docs whitelabelV1 --plugin-id api-v1-generator && node scripts/postprocess-api-docs.mjs",
+    "generate:api-docs": "npm run build:api-releases && node scripts/prepare-api-docs.mjs && docusaurus gen-api-docs whitelabel --plugin-id api-current-generator && node scripts/postprocess-api-docs.mjs",
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build",
