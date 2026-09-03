@@ -279,6 +279,7 @@ a:focus-visible {
 }
 
 .theme-doc-sidebar-menu > .menu__list-item > .menu__link {
+  color: var(--ifm-font-color-base);
   font-weight: 680;
 }
 
