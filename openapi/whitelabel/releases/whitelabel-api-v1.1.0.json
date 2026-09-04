@@ -517,8 +517,8 @@
                 "$ref": "#/components/schemas/OpenCardActivateParam"
               },
               "examples": {
-                "legacy": {
-                  "summary": "PFH/UPAY",
+                "cardVerification": {
+                  "summary": "卡号校验方式",
                   "value": {
                     "uid": "U10001",
                     "cardId": "CARD10001",
@@ -527,8 +527,8 @@
                     "expireDate": "12/30"
                   }
                 },
-                "uqpay": {
-                  "summary": "UQPAY 实体卡",
+                "pin": {
+                  "summary": "交易 PIN 方式",
                   "value": {
                     "uid": "U10001",
                     "cardId": "CARD10001",
@@ -1400,25 +1400,26 @@
           "pan": {
             "type": "string",
             "pattern": "^\\d+$",
-            "description": "PFH/UPAY 激活所需完整卡号"
+            "description": "采用卡号校验方式时填写的完整卡号"
           },
           "cvv": {
             "type": "string",
-            "description": "PFH/UPAY 激活所需 CVV"
+            "description": "采用卡号校验方式时填写的 CVV"
           },
           "expireDate": {
             "type": "string",
             "pattern": "^(0[1-9]|1[0-2])/\\d{2}$",
-            "description": "PFH/UPAY 激活所需有效期，格式 MM/YY"
+            "description": "采用卡号校验方式时填写的有效期，格式 MM/YY"
           },
           "pin": {
             "type": "string",
             "pattern": "^\\d{6}$",
-            "description": "UQPAY 实体卡激活所需 6 位 PIN"
+            "description": "采用交易 PIN 方式时填写的 6 位 PIN"
           }
         },
         "oneOf": [
           {
+            "description": "适用于采用卡号、CVV 和有效期校验的卡产品",
             "required": [
               "pan",
               "cvv",
@@ -1426,6 +1427,7 @@
             ]
           },
           {
+            "description": "适用于采用交易 PIN 激活的卡产品",
             "required": [
               "pin"
             ]
@@ -1767,12 +1769,12 @@
                   "DIRECT",
                   "IFRAME"
                 ],
-                "description": "敏感信息展示模式"
+                "description": "敏感信息展示方式：DIRECT 表示直接返回，IFRAME 表示通过安全 Iframe 展示"
               },
               "iframeUrl": {
                 "type": "string",
                 "nullable": true,
-                "description": "UQPAY 安全 Iframe 地址"
+                "description": "部分卡产品仅支持通过安全 Iframe 展示敏感信息。请在有效期内使用返回地址，不要记录、存储或复用"
               },
               "expireYear": {
                 "type": "integer",

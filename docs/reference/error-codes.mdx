@@ -52,7 +52,7 @@ sidebar_position: 2
 | `600002028` | Passport nationality is restricted |
 | `600002029` | ID card issuing country is restricted |
 | `600002030` | Phone country code is restricted |
-| `600002031` | Billing address cannot be mapped to provider region |
+| `600002031` | Billing address is not supported |
 
 ## 卡片管理（600003xxx）
 
@@ -65,7 +65,7 @@ sidebar_position: 2
 | `600003007` | Card status does not allow unfreeze |
 | `600003008` | Card status does not allow block |
 | `600003009` | Card status does not allow unblock |
-| `600003019` | Provider service temporarily unavailable |
+| `600003019` | Card service temporarily unavailable |
 | `600003020` | PIN operation failed |
 | `600003021` | PIN must be exactly 6 digits |
 
@@ -80,9 +80,9 @@ sidebar_position: 2
 | `600004006` | Credit amount invalid (must be greater than 0) |
 | `600004007` | Currency mismatch |
 | `600004009` | Credit record does not exist |
-| `600004011` | Provider rejected the credit adjustment request |
-| `600004012` | Provider response is abnormal, please retry later |
-| `600004013` | Provider has not returned for a long time, polling stopped |
+| `600004011` | Card service rejected the credit adjustment request |
+| `600004012` | Card service returned an abnormal response, please retry later |
+| `600004013` | Card service did not return in time, polling stopped |
 | `600004014` | Account callback failed, please retry later |
 | `600004015` | Please use a higher version to query, or consult the administrator. |
 | `600004016` | The current card currency and credit currency are not supported |
